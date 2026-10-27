@@ -1,7 +1,8 @@
 # Names in the Machine: run log, 2026-10-27 17:37 IST
 # machine: the shared Linux box this was built on (Linux 6.12.94+, 8 CPUs, 15 GB RAM, no GPU)
 # os: Debian GNU/Linux 13 (trixie) · python 3.13.5 · ollama version is 0.40.9
-# model: gemma3:1b, digest 8648f39daa8f, temperature 0, seed 0, num_predict 48, one line per call
+# model: gemma3:1b, digest 8648f39daa8f, temperature 0, seed 0, num_predict 48, one line per call,
+#        prompt with 2 invented examples (2-shot), emails removed from every line before the model reads it
 # every number in the post comes from this file or the other logs in logs/
 
 ## 1. eval labels, frozen before any model saw the lines
@@ -738,4 +739,19 @@ $ sed -n 6p /usr/share/doc/dpkg/copyright        (email removed with nitm.text.s
   not in the line: the prompt's example names 4, right name with wrong capitals 1, not in the line at all 4
   bad characters: names containing digits (dates, numbers) 6
 
+
+## 14. the review screen for one match, as `nitm verify --list` shows it (after the decision)
+$ nitm verify --list
+(decided) [14/17] Phil Katz · Q550635 · 1962–2000
+  occupations: programmer, computer scientist
+  gate: programmer, computer scientist; software link in receipt: DEFLATE
+  found by: byline, gemma · 1 receipts in 1 files
+    zlib1g/copyright:10  The deflate format used by zlib was defined by Phil Katz. The deflate  [byline, gemma]
+
+
+## 15. why three cards have no measurement (checked 27 Oct 2026)
+$ grep -rIl Chernov /usr/include /usr/lib/gcc        -> nothing; and no newlib package in /usr/share/doc
+$ find / -xdev -name 'e8691822f6a705e3e9fb48a0405c645b1a036590*'   -> nothing ([withdrawn]'s test font is not installed)
+$ dpkg -S /usr/bin/sdiff                             -> diffutils: /usr/bin/sdiff
+$ dpkg-query -W -f='${Essential}' diffutils          -> yes (Essential: no package declares a dependency on it)
 # end of run log, 2026-10-27 18:57 IST
