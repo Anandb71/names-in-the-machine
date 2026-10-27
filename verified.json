@@ -1,5 +1,5 @@
 {
- "about": "Only entries in this file can appear on the page. A person approved each one.",
+ "about": "Only entries in this file can appear on the page. Each was approved with `nitm verify`, with a reason and a second source.",
  "people": [
   {
    "qid": "Q92761",
@@ -29,6 +29,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -40,6 +41,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -51,6 +53,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -62,6 +65,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -73,6 +77,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -84,6 +89,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -95,6 +101,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -107,6 +114,7 @@
       "byline",
       "gemma"
      ],
+     "copies": 1,
      "others": 1
     },
     {
@@ -118,6 +126,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -129,6 +138,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -140,6 +150,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -151,6 +162,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 3
     }
    ],
@@ -160,7 +172,7 @@
     "value": 710,
     "sentence": "/var/log/dpkg.log on this machine records 710 package installs, upgrades and removals.",
     "command": "grep -cE '^\\S+ \\S+ (install|upgrade|remove|purge) ' /var/log/dpkg.log",
-    "measured_at": "2026-10-27T18:51+05:30",
+    "measured_at": "2026-10-27T19:37+05:30",
     "error": null
    },
    "snapshot": "2026-10-27"
@@ -193,6 +205,7 @@
       "byline",
       "gemma"
      ],
+     "copies": 1,
      "others": 0
     }
    ],
@@ -202,7 +215,7 @@
     "value": 83,
     "sentence": "83 installed packages on this machine depend on zlib1g.",
     "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances zlib1g | tail -n +3 | tr -d ' |' | sort -u | grep -vx zlib1g | wc -l",
-    "measured_at": "2026-10-27T18:51+05:30",
+    "measured_at": "2026-10-27T19:37+05:30",
     "error": null
    },
    "snapshot": "2026-10-27"
@@ -217,7 +230,7 @@
    "years_note": "birth date missing or imprecise on Wikidata",
    "reviewer": "Anand Biju",
    "date": "2026-10-27",
-   "reason": "Python's notices pair him with Secret Labs AB on xmlrpclib, unicodeobject.h and _subprocess.c (1999-2004). LWN's 2021 memorial: early Python contributor and Secret Labs co-founder. Wikidata's birth date is only century-precise, so only the death year is shown.",
+   "reason": "Python's notices pair him with Secret Labs AB on xmlrpclib, unicodeobject.h and _subprocess.c (1999-2004). LWN (2021): early Python contributor and Secret Labs co-founder. Wikidata's birth date is only century-precise, so only the death year is shown.",
    "second_source": "https://lwn.net/Articles/878325/",
    "found_by": [
     "copyright"
@@ -233,6 +246,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -244,6 +258,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -255,6 +270,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -266,6 +282,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -277,6 +294,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -288,6 +306,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -299,6 +318,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -310,6 +330,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -321,6 +342,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -332,6 +354,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -343,6 +366,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -354,6 +378,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -365,6 +390,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -376,6 +402,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -387,6 +414,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     }
    ],
@@ -396,7 +424,7 @@
     "value": 2,
     "sentence": "2 installed packages on this machine depend on libpython3.13-minimal.",
     "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libpython3.13-minimal | tail -n +3 | tr -d ' |' | sort -u | grep -vx libpython3.13-minimal | wc -l",
-    "measured_at": "2026-10-27T18:51+05:30",
+    "measured_at": "2026-10-27T19:37+05:30",
     "error": null
    },
    "snapshot": "2026-10-27"
@@ -427,6 +455,7 @@
      "methods": [
       "field"
      ],
+     "copies": 1,
      "others": 0
     }
    ],
@@ -436,7 +465,7 @@
     "value": 1,
     "sentence": "1 Python environment read by this scan has html2text installed.",
     "command": "find /home/box /usr/lib/python3/dist-packages /usr/local/lib/python3.13/dist-packages /workspace -path '*.dist-info/METADATA' -not -path '*/node_modules/*' -not -path '*/.cache/*' -not -path '/workspace/hacktoberfest/week4/build/tests/*' 2>/dev/null | xargs -r grep -lix 'Name: html2text' | wc -l",
-    "measured_at": "2026-10-27T18:51+05:30",
+    "measured_at": "2026-10-27T19:37+05:30",
     "error": null
    },
    "snapshot": "2026-10-27"
@@ -467,6 +496,7 @@
      "methods": [
       "field"
      ],
+     "copies": 2,
      "others": 1
     }
    ],
@@ -476,7 +506,7 @@
     "value": 2,
     "sentence": "2 Python environments read by this scan have matplotlib installed.",
     "command": "find /home/box /usr/lib/python3/dist-packages /usr/local/lib/python3.13/dist-packages /workspace -path '*.dist-info/METADATA' -not -path '*/node_modules/*' -not -path '*/.cache/*' -not -path '/workspace/hacktoberfest/week4/build/tests/*' 2>/dev/null | xargs -r grep -lix 'Name: matplotlib' | wc -l",
-    "measured_at": "2026-10-27T18:51+05:30",
+    "measured_at": "2026-10-27T19:37+05:30",
     "error": null
    },
    "snapshot": "2026-10-27"
@@ -492,7 +522,7 @@
    "years_note": null,
    "reviewer": "Anand Biju",
    "date": "2026-10-27",
-   "reason": "libbsd's fmtcheck.c came from NetBSD, contributed by Allen Briggs in 2000. NetBSD's developer list marks him with a dagger and 2012-03-03, the date Wikidata has.",
+   "reason": "libbsd's fmtcheck.c came from NetBSD, contributed by Allen Briggs in 2000. NetBSD's developer list gives 2012-03-03, the date Wikidata has.",
    "second_source": "https://www.netbsd.org/people/developers.html",
    "found_by": [
     "copyright"
@@ -508,6 +538,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     }
    ],
@@ -517,7 +548,7 @@
     "value": 5,
     "sentence": "5 installed packages on this machine depend on libbsd0.",
     "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libbsd0 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libbsd0 | wc -l",
-    "measured_at": "2026-10-27T18:51+05:30",
+    "measured_at": "2026-10-27T19:37+05:30",
     "error": null
    },
    "snapshot": "2026-10-27"
@@ -549,6 +580,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -560,6 +592,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -571,6 +604,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -582,6 +616,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -593,6 +628,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -604,6 +640,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -615,6 +652,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -626,6 +664,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -637,6 +676,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -648,6 +688,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -659,6 +700,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -670,6 +712,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -681,6 +724,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -692,6 +736,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -703,6 +748,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -714,6 +760,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -725,6 +772,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -736,6 +784,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -747,6 +796,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     }
    ],
@@ -783,6 +833,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -794,6 +845,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -805,6 +857,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     }
    ],
@@ -814,7 +867,7 @@
     "value": 2,
     "sentence": "2 installed packages on this machine depend on libcdio19t64.",
     "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libcdio19t64 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libcdio19t64 | wc -l",
-    "measured_at": "2026-10-27T18:51+05:30",
+    "measured_at": "2026-10-27T19:37+05:30",
     "error": null
    },
    "snapshot": "2026-10-27"
@@ -845,6 +898,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -856,6 +910,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -867,6 +922,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -878,6 +934,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -889,6 +946,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -900,6 +958,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -911,6 +970,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -922,6 +982,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -933,6 +994,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     }
    ],
@@ -942,7 +1004,7 @@
     "value": 3,
     "sentence": "3 installed packages on this machine depend on libavfilter10.",
     "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libavfilter10 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libavfilter10 | wc -l",
-    "measured_at": "2026-10-27T18:51+05:30",
+    "measured_at": "2026-10-27T19:37+05:30",
     "error": null
    },
    "snapshot": "2026-10-27"
@@ -973,6 +1035,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 2
     },
     {
@@ -984,6 +1047,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 2
     }
    ],
@@ -993,7 +1057,7 @@
     "value": 8,
     "sentence": "8 installed packages on this machine depend on libnettle8t64.",
     "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libnettle8t64 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libnettle8t64 | wc -l",
-    "measured_at": "2026-10-27T18:51+05:30",
+    "measured_at": "2026-10-27T19:37+05:30",
     "error": null
    },
    "snapshot": "2026-10-27"
@@ -1008,7 +1072,7 @@
    "years_note": null,
    "reviewer": "Anand Biju",
    "date": "2026-10-27",
-   "reason": "[withdrawn]'s test font is credited to [withdrawn] (2020) and came from his GitHub account, which Wikidata lists. His death in 2026 is reported by Wikipedia and Le Monde. The font is in [withdrawn]'s source, not installed here, so nothing is measured.",
+   "reason": "[withdrawn]'s test font is credited to [withdrawn] (2020) and came from his GitHub account, which Wikidata lists. Wikipedia and Le Monde (2026) give the date Wikidata has. The font is in [withdrawn]'s source, not installed here, so nothing is measured.",
    "second_source": "https://en.wikipedia.org/wiki/withdrawn",
    "found_by": [
     "copyright"
@@ -1024,6 +1088,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -1035,6 +1100,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -1046,6 +1112,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     }
    ],
@@ -1066,7 +1133,7 @@
    "years_note": null,
    "reviewer": "Anand Biju",
    "date": "2026-10-27",
-   "reason": "diffutils' ChangeLog-2008 has Tom Lord introducing sdiff on 16 Sep 1991 from an FSF machine; glibc's 1995 regex test suite is his. LWN's July 2022 notice and Wikidata (FSF and Carnegie Mellon) describe the same person. diffutils is Essential, so no package declares a dependency on it: nothing is measured.",
+   "reason": "diffutils' ChangeLog-2008 has Tom Lord introducing sdiff on 16 Sep 1991 from an FSF machine; glibc's 1995 regex test suite is his. LWN (July 2022) and Wikidata (FSF and Carnegie Mellon) describe the same person. diffutils is Essential, so no package declares a dependency on it: nothing is measured.",
    "second_source": "https://lwn.net/Articles/901807/",
    "found_by": [
     "byline",
@@ -1085,6 +1152,7 @@
       "byline",
       "gemma"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -1096,6 +1164,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -1107,6 +1176,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -1118,6 +1188,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     },
     {
@@ -1129,6 +1200,7 @@
      "methods": [
       "copyright"
      ],
+     "copies": 1,
      "others": 0
     }
    ],

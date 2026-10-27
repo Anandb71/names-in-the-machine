@@ -10,12 +10,17 @@ EMAIL_MARK = "<email removed>"
 
 # Plain addresses, with or without angle brackets.
 EMAIL_RE = re.compile(r"<?\b[\w.+'%-]+@[\w-]+(?:\.[\w-]+)+\b>?")
-# Spelled-out addresses: "foo [at] bar.org", "foo (at) bar (dot) org", "foo at bar dot org".
-# A bare " at " only counts when a spelled " dot " follows, so prose like "at MIT." is left alone.
+# Spelled-out and disguised addresses: "foo [at] bar.org", "foo (at) bar (dot) org", "foo at bar dot org",
+# "<foo at bar.org>", "foo-at-bar.org", "first dot last at bar dot org", and fullwidth at signs.
+# A bare " at " only counts inside <...>, (...) or [...], or when a spelled " dot " follows,
+# so prose like "at MIT." is left alone.
+_DOT = r"(?:\.|\s*\[dot\]\s*|\s*\(dot\)\s*|\s*\{dot\}\s*|\s*<dot>\s*|\s+dot\s+|\s*[-_]dot[-_]\s*)"
+_AT = r"(?:\s*[@＠﹫]\s*|\s*\[at\]\s*|\s*\(at\)\s*|\s*\{at\}\s*|\s*<at>\s*|\s*[-_]at[-_]\s*)"
+_PART = r"[\w+-]+"
 SPELLED_EMAIL_RE = re.compile(
-    r"<?\b[\w.+-]+\s*(?:\[at\]|\(at\)|\{at\}|<at>)\s*[\w-]+"
-    r"(?:(?:\.(?=\w)|\s*\[dot\]\s*|\s*\(dot\)\s*|\s*\{dot\}\s*|\s*<dot>\s*)[\w-]+)+\b>?"
-    r"|\b[\w.+-]+\s+at\s+[\w-]+(?:\s+dot\s+[\w-]+)+\b",
+    rf"<?\b{_PART}(?:{_DOT}{_PART})*{_AT}{_PART}(?:{_DOT}{_PART})+\b>?"
+    rf"|[<(\[]\s*{_PART}(?:{_DOT}{_PART})*\s+at\s+{_PART}(?:{_DOT}{_PART})+\s*[>)\]]"
+    rf"|\b{_PART}(?:{_DOT}{_PART})*\s+at\s+{_PART}(?:\s+dot\s+{_PART})+\b",
     re.I,
 )
 URL_RE = re.compile(r"(?:https?|ftp)://\S+|\bwww\.\S+", re.I)
@@ -36,7 +41,7 @@ def strip_emails(text: str) -> str:
 
 
 def has_email(text: str) -> bool:
-    return bool(EMAIL_RE.search(text))
+    return bool(EMAIL_RE.search(text) or SPELLED_EMAIL_RE.search(text))
 
 
 def remove_emails(text: str) -> str:
@@ -160,3 +165,29 @@ def key_hash(key: str) -> str:
 
 def text_hash(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
+
+
+# Words about how or why someone died. None of them may appear on the page or in a review reason.
+DEATH_WORDS = (
+    "suicide", "suicidal", "kill", "killed", "killing", "murder", "murdered", "overdose", "cancer", "illness", "ill",
+    "disease", "sickness", "accident", "accidental", "crash", "hanged", "hanging", "shot", "shooting",
+    "drowned", "drowning", "tragic", "tragically", "tragedy", "depression", "depressed", "heart attack",
+    "stroke", "pancreatitis", "alcohol", "alcoholism", "drug", "prosecution", "prosecuted",
+    "indictment", "indicted", "arrest", "arrested", "police", "custody", "autopsy", "coroner", "cause of death",
+    "manner of death", "passed away suddenly", "untimely", "too soon", "lost his life", "lost her life",
+    "took his own life", "took her own life", "struggle", "battle with", "complications",
+)
+_INVISIBLE_RE = re.compile("[\u00ad\u200b\u200c\u200d\u2060\ufeff]")
+
+
+def _death_pattern(phrase: str) -> str:
+    words = [re.escape(w) for w in phrase.split()]
+    return r"\s+(?:/\s+)?".join(words) + r"(?:s|es|d|ed|ing|ings)?"
+
+
+DEATH_WORD_RE = re.compile(r"\b(?:" + "|".join(_death_pattern(w) for w in DEATH_WORDS) + r")\b", re.I)
+
+
+def death_words(text: str) -> list[str]:
+    """Words about how someone died, found even with an ending, a line break marker or a soft hyphen."""
+    return [m.group(0) for m in DEATH_WORD_RE.finditer(_INVISIBLE_RE.sub("", text))]

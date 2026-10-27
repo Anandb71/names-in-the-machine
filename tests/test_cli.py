@@ -33,7 +33,7 @@ def test_scan_prints_counts_and_no_names(tmp_path, capsys):
 
 def test_verify_then_page(tmp_path, capsys):
     scan(tmp_path, capsys)
-    review = ["--verified", str(tmp_path / "verified.json"), "--local", str(tmp_path / "local.json")]
+    review = ["--verified", str(tmp_path / "verified.json"), "--local", str(tmp_path / "local.json"), "--reviewer", "A Reviewer"]
     assert cli.main(["verify", "--approve", "Q92761", "--reason", "same person"] + review + common(tmp_path)) == 2
     assert cli.main(["verify", "--approve", "Q92761", "--reason", "same person", "--source",
                      "https://en.wikipedia.org/wiki/Ian_Murdock", "--primary", "dpkg/copyright:6",
@@ -43,7 +43,7 @@ def test_verify_then_page(tmp_path, capsys):
     assert [p["name"] for p in verified["people"]] == ["Ian Murdock"]
     assert "Q133867446" not in (tmp_path / "verified.json").read_text()
     html_path = tmp_path / "ofrenda.html"
-    assert cli.main(["page", "-o", str(html_path)] + review + common(tmp_path)) == 0
+    assert cli.main(["page", "-o", str(html_path)] + review[:4] + common(tmp_path)) == 0
     html = html_path.read_text()
     assert "Ian Murdock" in html and "@" not in html
     assert "Thomas Lord" not in html

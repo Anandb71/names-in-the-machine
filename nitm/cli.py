@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -66,6 +67,19 @@ def _pip_roots(args) -> list[str]:
     roots = [] if args.no_default_pip else sources.default_pip_roots()
     roots += [str(Path(p).resolve()) for p in args.pip_root or []]
     return sources.collapse_roots(roots)
+
+
+def _reviewer(args) -> str | None:
+    """Who is approving: --reviewer, then NITM_REVIEWER, then git's user.name. Never a built-in name."""
+    if args.reviewer:
+        return args.reviewer
+    if os.environ.get("NITM_REVIEWER"):
+        return os.environ["NITM_REVIEWER"]
+    try:
+        name = subprocess.run(["git", "config", "user.name"], capture_output=True, text=True, timeout=10).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        name = ""
+    return name or None
 
 
 # --- scan -----------------------------------------------------------------------------------
@@ -155,6 +169,10 @@ def cmd_verify(args) -> int:
             mark = "decided" if match["qid"] in decided else "open"
             print(f"({mark}) " + review.screen(match, snap.people[match["qid"]], index, len(queue)))
         return 0
+    reviewer = _reviewer(args)
+    if not reviewer:
+        print("nitm: say who is reviewing: --reviewer NAME (or NITM_REVIEWER, or git config user.name)", file=sys.stderr)
+        return 2
     if args.approve or args.reject:
         qid = args.approve or args.reject
         found = [m for m in queue if m["qid"] == qid]
@@ -169,7 +187,7 @@ def cmd_verify(args) -> int:
             probe = {"probe": kind, "arg": arg}
         try:
             entry = review.decide(found[0], snap.people[qid], verified, local, approve=bool(args.approve),
-                                  reason=args.reason or "", source=args.source, reviewer=args.reviewer,
+                                  reason=args.reason or "", source=args.source, reviewer=reviewer,
                                   snapshot_date=snap.retrieved, probe=probe, primary=args.primary)
         except ValueError as exc:
             print(f"nitm: {exc}", file=sys.stderr)
@@ -179,7 +197,7 @@ def cmd_verify(args) -> int:
         print(f"saved: {entry['name']} ({entry['years']})" if entry else f"left off: {qid}")
         return 0
     approved, rejected, skipped = review.interactive(
-        matches, snap.people, verified, local, reviewer=args.reviewer, snapshot_date=snap.retrieved,
+        matches, snap.people, verified, local, reviewer=reviewer, snapshot_date=snap.retrieved,
         ask=input, out=sys.stdout,
     )
     review.save_json(Path(args.verified), verified)
@@ -196,12 +214,19 @@ def cmd_still(args) -> int:
     path = Path(args.verified)
     verified = review.load_verified(path)
     roots = _pip_roots(args)
+    summary = review.load_json(Path(args.out) / "summary.json", None)
+    if not args.pip_root and summary and (summary.get("sources") or {}).get("pip_roots"):
+        roots = summary["sources"]["pip_roots"]  # count installs where the scan looked, not elsewhere
     log(f"nitm still · {_now()}")
     for entry in verified.get("people", []):
         probe = entry.get("still") or {}
         if not probe.get("probe"):
             continue
-        m = still.measure(probe["probe"], probe.get("arg", ""), pip_roots=roots)
+        try:
+            m = still.measure(probe["probe"], probe.get("arg", ""), pip_roots=roots)
+        except ValueError as exc:  # an unknown probe: record it, keep going
+            log(f"  {entry['name']}: not measured ({exc})")
+            continue
         entry["still"] = m.to_json()
         if m.value is None:
             log(f"  {entry['name']}: not measured ({m.error})")
@@ -209,6 +234,7 @@ def cmd_still(args) -> int:
             log(f"  {entry['name']}: {m.sentence}")
         log(f"      $ {m.command}")
         log(f"      measured {m.measured_at}")
+        review.save_json(path, verified)
     review.save_json(path, verified)
     return 0
 
@@ -225,6 +251,10 @@ def cmd_page(args) -> int:
         meta = snapshot.load(Path(args.data)).meta
     for name, problems in page.skipped(verified):
         print(f"nitm: not on the page: {name} ({'; '.join(problems)})", file=sys.stderr)
+    public = review.text_problems(json.dumps(review.publishable(verified), ensure_ascii=False))
+    if public:
+        print(f"nitm: page not written: verified.json {public[0]}", file=sys.stderr)
+        return 1
     html = page.render(verified, summary=summary, review_counts=review.review_counts(local), snapshot_meta=meta)
     problems = page.check(html)
     if problems:
@@ -398,7 +428,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     v = sub.add_parser("verify", help="approve or turn down each match by hand")
     paths(v, out=True, data=True, verified=True, local=True)
-    v.add_argument("--reviewer", default=os.environ.get("NITM_REVIEWER", "Anand Biju"))
+    v.add_argument("--reviewer", help="who is approving (default: NITM_REVIEWER, then git config user.name)")
     v.add_argument("--list", action="store_true", help="show the review queue and stop")
     v.add_argument("--approve", metavar="QID", help="approve one match without the prompt")
     v.add_argument("--reject", metavar="QID", help="turn down one match without the prompt")
@@ -408,8 +438,8 @@ def build_parser() -> argparse.ArgumentParser:
     v.add_argument("--primary", help="the receipt to show first, e.g. dpkg/copyright:6")
     v.set_defaults(func=cmd_verify)
 
-    st = sub.add_parser("still", help="measure what each verified person's named work still does here")
-    paths(st, verified=True)
+    st = sub.add_parser("still", help="measure one thing on this machine for each verified card")
+    paths(st, verified=True, out=True)
     st.add_argument("--log", help="append the measurements to this run log")
     pip(st)
     st.set_defaults(func=cmd_still)
@@ -419,7 +449,7 @@ def build_parser() -> argparse.ArgumentParser:
     pg.add_argument("-o", "--output", default="ofrenda.html")
     pg.set_defaults(func=cmd_page)
 
-    ev = sub.add_parser("eval", help="the hand-labelled free-text eval")
+    ev = sub.add_parser("eval", help="the labelled free-text eval")
     ev_sub = ev.add_subparsers(dest="eval_command", required=True)
 
     def eval_paths(p):

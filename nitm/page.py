@@ -1,8 +1,8 @@
 """The ofrenda: one static HTML file, built only from verified.json.
 
 Every word on a card comes from a template, a verified field (name, years, Wikidata id,
-reviewer, date), a receipt line quoted exactly from a file on the machine (emails removed),
-or a measurement with the command that produced it. No model writes anything here.
+date), a receipt line quoted from a file on the machine (emails and other people's names
+removed), or a measurement with the command that produced it. No model writes anything here.
 
 Living people never appear by name: the page shows them only as counts.
 """
@@ -13,8 +13,8 @@ import html
 import re
 from typing import Any
 
-from nitm.review import publish_problems, publishable
-from nitm.text import EMAIL_RE, SPELLED_EMAIL_RE, strip_emails
+from nitm.review import file_count, publish_problems, publishable
+from nitm.text import DEATH_WORD_RE, DEATH_WORDS, EMAIL_RE, SPELLED_EMAIL_RE, death_words, strip_emails
 
 REPO_URL = "https://github.com/Anandb71/names-in-the-machine"
 ISSUES_URL = REPO_URL + "/issues"
@@ -33,19 +33,6 @@ def _found_line(methods: list[str]) -> str:
         return "the scan"
     return labels[0] if len(labels) == 1 else ", ".join(labels[:-1]) + " and " + labels[-1]
 
-# Words about how or why someone died. None of them may appear anywhere on the page.
-DEATH_WORDS = (
-    "suicide", "suicidal", "killed", "kill", "murder", "murdered", "overdose", "cancer", "illness", "ill",
-    "disease", "sickness", "accident", "accidental", "crash", "hanged", "hanging", "shot", "shooting",
-    "drowned", "drowning", "tragic", "tragically", "tragedy", "depression", "depressed", "heart attack",
-    "stroke", "pancreatitis", "alcohol", "alcoholism", "drug", "drugs", "prosecution", "prosecuted",
-    "indictment", "indicted", "arrest", "arrested", "police", "custody", "autopsy", "coroner", "cause of death",
-    "manner of death", "passed away suddenly", "untimely", "too soon", "lost his life", "lost her life",
-    "took his own life", "took her own life", "struggle", "battle with",
-)
-DEATH_WORD_RE = re.compile(r"\b(?:" + "|".join(re.escape(w) for w in DEATH_WORDS) + r")\b", re.I)
-
-
 def _e(text: Any) -> str:
     return html.escape(str(text), quote=True)
 
@@ -62,16 +49,18 @@ def check(page: str) -> list[str]:
     problems = []
     if "@" in page or EMAIL_RE.search(page) or SPELLED_EMAIL_RE.search(page):
         problems.append("the page contains an email address (or an @ of any kind)")
-    hit = DEATH_WORD_RE.search(visible_text(page))
-    if hit:
-        problems.append(f"the page contains a word about how someone died: {hit.group(0)!r}")
+    hits = death_words(visible_text(page))
+    if hits:
+        problems.append(f"the page contains a word about how someone died: {hits[0]!r}")
     return problems
 
 
 def _receipt_html(receipt: dict[str, Any]) -> str:
     text = strip_emails(receipt["text"])
+    copies = int(receipt.get("copies") or 1)
+    also = f" ({copies} copies on this machine)" if copies > 1 else ""
     return (
-        f'<figure class="receipt"><figcaption>{_e(receipt["file"])}, line {_e(receipt["line"])}</figcaption>'
+        f'<figure class="receipt"><figcaption>{_e(receipt["file"])}, line {_e(receipt["line"])}{_e(also)}</figcaption>'
         f"<pre><code>{_e(text)}</code></pre></figure>"
     )
 
@@ -80,14 +69,16 @@ def _still_html(still: dict[str, Any] | None) -> str:
     if not still or still.get("value") is None or not still.get("sentence"):
         return ""
     return (
-        '<div class="still"><p class="still-label">Still working here</p>'
+        '<div class="still"><p class="still-label">Measured on this machine</p>'
         f'<p>{_e(still["sentence"])}</p>'
         f'<p class="cmd"><code>{_e(still["command"])}</code><br>measured {_e(still["measured_at"][:16].replace("T", " "))} IST</p></div>'
     )
 
 
 def _more_item(r: dict[str, Any]) -> str:
-    where = f'<span class="where">{_e(r["file"])}:{_e(r["line"])}</span>'
+    copies = int(r.get("copies") or 1)
+    also = f" ({copies} copies on this machine)" if copies > 1 else ""
+    where = f'<span class="where">{_e(r["file"])}:{_e(r["line"])}{_e(also)}</span>'
     if not r.get("text"):
         n = int(r.get("others") or 0)
         return f'<li>{where}<span class="also"> also names {n} other {"person" if n == 1 else "people"}, so it is not quoted here</span></li>'
@@ -96,11 +87,11 @@ def _more_item(r: dict[str, Any]) -> str:
 
 def card(entry: dict[str, Any]) -> str:
     receipts = entry["receipts"]
-    files = sorted({r["file"] for r in receipts})
+    files = file_count(receipts)
     index = int(entry.get("primary_receipt") or 0)
     primary = receipts[index] if 0 <= index < len(receipts) and receipts[index].get("text") else next(r for r in receipts if r.get("text"))
     rest = [r for r in receipts if r is not primary]
-    places = f"{len(files)} file" + ("s" if len(files) != 1 else "")
+    places = f"{files} file" + ("s" if files != 1 else "")
     more = ""
     if rest:
         items = "".join(_more_item(r) for r in rest)
@@ -115,7 +106,7 @@ def card(entry: dict[str, Any]) -> str:
   {_receipt_html(primary)}
   {more}
   {_still_html(entry.get('still'))}
-  <p class="source">Years from Wikidata {_e(entry['qid'])} (snapshot {_e(entry.get('snapshot', ''))}). Found by {_e(found_line)}. Checked by hand against a second source by {_e(entry['reviewer'])} on {_e(entry['date'])}.</p>
+  <p class="source">Years from Wikidata {_e(entry['qid'])} (snapshot {_e(entry.get('snapshot', ''))}). Found by {_e(found_line)}. Checked against the receipt, Wikidata and a second source on {_e(entry['date'])}.</p>
 </article>"""
 
 
@@ -175,7 +166,7 @@ def _left_off(summary: dict[str, Any] | None, review_counts: dict[str, int] | No
     gate = match.get("names_removed_by_gate_by_reason", {})
     no_death += sum(v for k, v in gate.items() if k == "no_death_date")
     if no_death:
-        items.append(f"{no_death:,} name{'s' if no_death != 1 else ''} matched someone on Wikidata with no death date recorded. Left off, not guessed.")
+        items.append(f"{no_death:,} name{'s' if no_death != 1 else ''} matched only people on Wikidata with no death date recorded. Left off, not guessed.")
     unverifiable = sum(v for k, v in gate.items() if k != "no_death_date")
     if unverifiable:
         items.append(
@@ -184,7 +175,7 @@ def _left_off(summary: dict[str, Any] | None, review_counts: dict[str, int] | No
         )
     rejected = int((review_counts or {}).get("rejected", 0))
     if rejected:
-        items.append(f"{rejected:,} match{'es' if rejected != 1 else ''} turned down at review: the same name, but not the same person, or not sure.")
+        items.append(f"{rejected:,} match{'es' if rejected != 1 else ''} turned down at review.")
     names = int(((summary or {}).get("names") or {}).get("unique_names_after_validator", 0))
     if names:
         items.append(f"Everyone else stays a number: {names:,} name-shaped strings passed the validator, and living people are never named here.")
@@ -228,7 +219,7 @@ def render(
   <p class="garland" aria-hidden="true">✿ ✿ ✿ ✿ ✿</p>
   <h1>Names in the Machine</h1>
   <p>An ofrenda for {count} {'person' if count == 1 else 'people'} who have died and whose names still ship inside this computer.</p>
-  <p>Their names are here because open-source licenses keep the copyright notice with the code.</p>
+  <p>Most of these names are here because open-source licenses keep the copyright notice with the code.</p>
   <p>{_e(scanned)}</p>
 </header>
 <main>
@@ -236,7 +227,7 @@ def render(
 {_left_off(summary, review_counts)}
 </main>
 <footer>
-  <p>Every line quoted above is copied exactly from a file on this machine, with email addresses and other people's names removed. {snap} No model wrote any of the text on this page.</p>
+  <p>Every line quoted above is copied from a file on this machine, with email addresses and other people's names removed. A line that runs onto the next is joined with " / ". {snap} No model wrote any of the text on this page.</p>
   <p><strong>Corrections:</strong> if a card here is wrong, or a family asks, it comes down at once. Open an issue at <a href="{ISSUES_URL}">{_e(ISSUES_URL)}</a>.</p>
   <p>Made with <a href="{REPO_URL}">names-in-the-machine</a>.</p>
 </footer>

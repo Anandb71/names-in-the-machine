@@ -118,9 +118,9 @@ def test_page_has_corrections_line_and_left_off_counts(world):
     html = world["html"]
     assert "it comes down at once" in html
     assert "https://github.com/Anandb71/names-in-the-machine/issues" in html
-    assert "1 name matched someone on Wikidata with no death date recorded" in html  # Thomas G. Vane
+    assert "1 name matched only people on Wikidata with no death date recorded" in html  # Thomas G. Vane
     assert "1 name matched a person who has died, but with no software occupation" in html  # Rory Smythe
-    assert "1 match turned down at review" in html
+    assert "1 match turned down at review." in html
 
 
 def test_no_model_wrote_the_page(world):

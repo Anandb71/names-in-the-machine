@@ -613,7 +613,7 @@ saved: Thomas Lord (1966–2022)
 # (dates after the Wikidata death, a different career, or the contributor still publishing software).
 # The decisions and reasons stay in review.local.json on this machine, because a turned-down match is
 # usually a living person who shares a name with someone who died. One of the five was the only match
-# that came from Gemma alone (a name-first line in a contributor list).
+# that came from Gemma alone.
 
 ## 8. still working: one measurement per card where an honest one exists (the command is printed on the card)
 $ nitm still --pip-root /workspace --pip-root /home/box --log logs/run_2026-10-27.txt
@@ -754,4 +754,104 @@ $ grep -rIl Chernov /usr/include /usr/lib/gcc        -> nothing; and no newlib p
 $ find / -xdev -name 'e8691822f6a705e3e9fb48a0405c645b1a036590*'   -> nothing ([withdrawn]'s test font is not installed)
 $ dpkg -S /usr/bin/sdiff                             -> diffutils: /usr/bin/sdiff
 $ dpkg-query -W -f='${Essential}' diffutils          -> yes (Essential: no package declares a dependency on it)
-# end of run log, 2026-10-27 18:57 IST
+
+## 16. after the pre-publish review (re-recorded, re-measured, re-rendered)
+# An independent review of the post and the publish-gate code found problems, fixed before this section:
+#  - the cards said "Checked by hand against a second source by <reviewer>", but the identity checks for
+#    this run were done by AI agents (an identity check plus an independent refuter per match, see the
+#    post) and by the build's own source checks; no person has checked them by hand yet. The cards now
+#    say "Checked against the receipt, Wikidata and a second source on <date>". verified.json keeps the
+#    reviewer field the build brief asked for ("Anand Biju"); he should re-check before publishing.
+#  - the reviewer name was a built-in default; it now has to be given (--reviewer, NITM_REVIEWER or git).
+#  - spelled-out emails ("user -at- example.org", "<first.last at example.org>") slipped past the filter;
+#    on this machine 800 copyright lines without an @ carry one. All are now removed.
+#  - name removal now errs toward removing: name-shaped runs the extraction validator rejects for their
+#    shape (all capitals, five words) are removed too, and "AND" splits names like "and".
+#  - the cause-of-death check now catches word endings, soft hyphens and phrases split across lines,
+#    and also runs on the review reasons, which are public in verified.json.
+#  - two copies of one file (one METADATA in two environments) were counted as one file.
+#  - an unknown still-working probe crashed `nitm still`; probes are now checked when approving.
+# The same 12 approvals and 5 rejections were re-recorded with the fixed code; three reasons were
+# reworded to plain source names (no "memorial", "notice" or "dagger").
+
+$ (the same 12 approvals as section 7, re-recorded with --reviewer "Anand Biju")
+saved: Ian Murdock (1973–2015)
+saved: Phil Katz (1962–2000)
+saved: Fredrik Lundh (died 2021)
+saved: Aaron Swartz (1986–2013)
+saved: John D. Hunter (1968–2012)
+saved: Allen Kenneth Briggs (1970–2012)
+saved: Andrey Aleksandrovich Chernov (1966–2017)
+saved: Jörg Schilling (1955–2021)
+saved: John Walker (1949–2024)
+saved: Ross J. Anderson (1956–2024)
+saved: [withdrawn] (1994–2026)
+saved: Thomas Lord (1966–2022)
+
+$ nitm still --pip-root /workspace --pip-root /home/box --log logs/run_2026-10-27.txt
+nitm still · 2026-10-27 19:37 IST
+  Ian Murdock: /var/log/dpkg.log on this machine records 710 package installs, upgrades and removals.
+      $ grep -cE '^\S+ \S+ (install|upgrade|remove|purge) ' /var/log/dpkg.log
+      measured 2026-10-27T19:37+05:30
+  Phil Katz: 83 installed packages on this machine depend on zlib1g.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances zlib1g | tail -n +3 | tr -d ' |' | sort -u | grep -vx zlib1g | wc -l
+      measured 2026-10-27T19:37+05:30
+  Fredrik Lundh: 2 installed packages on this machine depend on libpython3.13-minimal.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libpython3.13-minimal | tail -n +3 | tr -d ' |' | sort -u | grep -vx libpython3.13-minimal | wc -l
+      measured 2026-10-27T19:37+05:30
+  Aaron Swartz: 1 Python environment read by this scan has html2text installed.
+      $ find /home/box /usr/lib/python3/dist-packages /usr/local/lib/python3.13/dist-packages /workspace -path '*.dist-info/METADATA' -not -path '*/node_modules/*' -not -path '*/.cache/*' -not -path '/workspace/hacktoberfest/week4/build/tests/*' 2>/dev/null | xargs -r grep -lix 'Name: html2text' | wc -l
+      measured 2026-10-27T19:37+05:30
+  John D. Hunter: 2 Python environments read by this scan have matplotlib installed.
+      $ find /home/box /usr/lib/python3/dist-packages /usr/local/lib/python3.13/dist-packages /workspace -path '*.dist-info/METADATA' -not -path '*/node_modules/*' -not -path '*/.cache/*' -not -path '/workspace/hacktoberfest/week4/build/tests/*' 2>/dev/null | xargs -r grep -lix 'Name: matplotlib' | wc -l
+      measured 2026-10-27T19:37+05:30
+  Allen Kenneth Briggs: 5 installed packages on this machine depend on libbsd0.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libbsd0 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libbsd0 | wc -l
+      measured 2026-10-27T19:37+05:30
+  Jörg Schilling: 2 installed packages on this machine depend on libcdio19t64.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libcdio19t64 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libcdio19t64 | wc -l
+      measured 2026-10-27T19:37+05:30
+  John Walker: 3 installed packages on this machine depend on libavfilter10.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libavfilter10 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libavfilter10 | wc -l
+      measured 2026-10-27T19:37+05:30
+  Ross J. Anderson: 8 installed packages on this machine depend on libnettle8t64.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libnettle8t64 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libnettle8t64 | wc -l
+      measured 2026-10-27T19:37+05:30
+
+$ nitm page -o docs/ofrenda.html
+wrote docs/ofrenda.html: 12 cards
+$ grep -c @ docs/ofrenda.html
+0
+
+# receipts per verified person, recounted (copies of one file in two places now count twice)
+  Ian Murdock                      1973–2015   named in  6 files (12 distinct lines, 2 with other names removed); first quoted: dpkg/copyright:6
+  Phil Katz                        1962–2000   named in  1 files (1 distinct lines); first quoted: zlib1g/copyright:10
+  Fredrik Lundh                    died 2021   named in  5 files (15 distinct lines); first quoted: libpython3.13-minimal/copyright:510
+  Aaron Swartz                     1986–2013   named in  1 files (1 distinct lines); first quoted: html2text-2025.4.15.dist-info/METADATA:5
+  John D. Hunter                   1968–2012   named in  2 files (1 distinct lines, 1 with other names removed); first quoted: matplotlib-3.11.2.dist-info/METADATA:5
+  Allen Kenneth Briggs             1970–2012   named in  1 files (1 distinct lines); first quoted: libbsd0/copyright:194
+  Andrey Aleksandrovich Chernov    1966–2017   named in 19 files (19 distinct lines); first quoted: cpp-14-x86-64-linux-gnu/copyright:1112
+  Jörg Schilling                   1955–2021   named in  3 files (3 distinct lines); first quoted: libcdio19t64/copyright:13
+  John Walker                      1949–2024   named in  9 files (9 distinct lines); first quoted: libavfilter10/copyright:41
+  Ross J. Anderson                 1956–2024   named in  2 files (2 distinct lines, 2 with other names removed); first quoted: libnettle8t64/copyright:560
+  [withdrawn]                 1994–2026   named in  3 files (3 distinct lines); first quoted: [withdrawn]
+  Thomas Lord                      1966–2022   named in  5 files (5 distinct lines); first quoted: diffutils/copyright:9
+
+# the review screen for Phil Katz, re-captured after the plural fix
+$ nitm verify --list
+(decided) [14/17] Phil Katz · Q550635 · 1962–2000
+  occupations: programmer, computer scientist
+  gate: programmer, computer scientist; software link in receipt: DEFLATE
+  found by: byline, gemma · 1 receipt in 1 file
+    zlib1g/copyright:10  The deflate format used by zlib was defined by Phil Katz. The deflate  [byline, gemma]
+
+## 17. tests after the review fixes (no model, no network)
+$ python -m pytest -q
+148 passed in 0.78s
+
+
+# the five turned down (from review.local.json, counts only): in 1 the file is dated after the death of
+# the person on Wikidata, in 1 the contributor is still publishing software, in 3 the careers do not match.
+# John Walker's match carried the tool's warning that someone on Wikidata with the same name has no death
+# date; review checked that the FFmpeg line is his (the ciescope code came from his program at fourmilab.ch).
+# end of run log, 2026-10-27 19:37 IST

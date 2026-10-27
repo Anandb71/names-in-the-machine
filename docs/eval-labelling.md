@@ -5,9 +5,10 @@ about 40 real negatives (license template text and credit sentences that name no
 `nitm eval build` writes them to `eval/lines.jsonl`. Email addresses are already removed,
 exactly as they are before Gemma reads a line.
 
-Labels are written **before** any model sees the lines. `nitm eval freeze` then records the
-sha256 of the lines and the labels, and `nitm eval run` refuses to score if either file
-changed after that.
+Labels are written **before** the scan sends any of these lines to Gemma. `nitm eval freeze`
+then records the sha256 of the lines and the labels, and `nitm eval run` refuses to score if
+either file changed after that. (In the first run, on 27 Oct 2026, the three labelling passes
+were AI agents that saw only this guide and the raw lines.)
 
 ## The rules
 

@@ -12,17 +12,19 @@ Copyright © 1994 Ian Murdock <email removed>
 
 Ian Murdock started Debian. He died in 2015. His name is still on every Debian machine,
 because open-source licenses keep the copyright notice with the code, and Debian ships a
-copyright file with every package.
+copyright file with every package. Most of the names this tool finds are there for the same
+reason; a few are there because packagers and authors credited people anyway.
 
-`nitm` reads every license and copyright file on the machine, finds the people named there,
-checks them against a dated Wikidata snapshot of people who have died, and puts each match in
-front of a person to approve by hand. Each approved person gets a quiet card on one static
-HTML page: their name, their years, the exact file and line where the name still sits, and one
-thing measured on this machine.
+`nitm` reads the Debian copyright files and Python package metadata on the machine, finds the
+people named there, checks them against a Wikidata snapshot of people who have died, and puts
+each match that passes a homonym gate up for review with `nitm verify`. Each approved person
+gets a quiet card on one static HTML page: their name, their years, the exact file and line
+where the name still sits, and, where an honest one exists, one thing measured on this machine.
 
 Code finds the facts. Gemma 3 1B (`gemma3:1b`, local, through Ollama) reads the free-text
 credit lines, one line at a time, and only proposes names. A validator decides which proposals
-count. A person approves every card. No model writes a word about anyone.
+count. Every card is approved in `nitm verify` with a reason and a second source. Gemma never
+writes a word about anyone, and no model wrote any text on the page.
 
 ![the ofrenda page](docs/ofrenda.png)
 
@@ -30,11 +32,17 @@ count. A person approves every card. No model writes a word about anyone.
 
 On 27 Oct 2026 the scan read 1,682 files (800 Debian copyright files and 882 Python METADATA
 files). 21 names matched someone on Wikidata who has died. The homonym gate removed 3, and
-review by hand turned down 5 more: in each, the person in the file shares a name with someone
-who died but is someone else. 12 people are on the page (`docs/ofrenda.html`). 579 names matched
-only people with no death date on Wikidata, so they were left off, not guessed.
+review turned down 5 more: in each, the person in the file shares a name with someone who died
+but is someone else. 12 people are on the page (`docs/ofrenda.html`). 579 names matched only
+people with no death date on Wikidata, so they were left off, not guessed.
 
-On the hand-labelled free-text eval (307 lines, 260 names), the free-text regex alone scored
+The identity checks in this run were done by AI agents (one checking each match against the
+receipt, Wikidata and a second source, and an independent one trying to refute it) and spot-checked
+during the build. `verified.json` names Anand Biju as reviewer; the page does not claim anyone
+checked the cards by hand. If you find a mistake, see Corrections below.
+
+On the labelled free-text eval (307 lines, 260 names; labels from three independent AI-agent
+passes over a written guide, frozen before the scan sent Gemma any line), the free-text regex alone scored
 precision 0.960 and recall 0.738. Gemma 3 1B behind the validator scored 0.996 and 0.946, and
 regex plus Gemma 0.965 and 0.965. Every number, the commands that produced it, and what went
 wrong along the way are in [`logs/run_2026-10-27.txt`](logs/run_2026-10-27.txt).
@@ -82,8 +90,9 @@ path works anywhere pip runs: `nitm scan --no-docs --pip-root <dir>`.
 4. **Match.** Exact Wikidata label or alias only, diacritics folded and middle initials
    optional. No fuzzy matching and no surname-only matching. The item must be a human (Q5)
    with a death date precise to the year, and have a software or computer-science occupation
-   or a link to software that is named in the receipt. A name that matches someone on
-   Wikidata with no death date is left off, not guessed.
+   or a link to software that is named in the receipt. A name that matches only people with
+   no death date is left off, not guessed. A name that also matches someone who died goes to
+   review with a warning.
 5. **Verify.** `nitm verify` shows the receipts, the Wikidata item, the years, the occupation
    and any warnings. An approval needs a reason and a second-source URL. Approvals go to
    `verified.json`; turned-down matches stay in `review.local.json` on the machine.
@@ -91,9 +100,10 @@ path works anywhere pip runs: `nitm scan --no-docs --pip-root <dir>`.
    second source. It refuses to write a page that contains an email address or a word about
    how someone died.
 
-`nitm eval build | freeze | run` is the free-text eval: hand labels, frozen with a sha256
-before any model sees the lines, then precision and recall for the regex alone, Gemma alone,
-and both. See `docs/eval-labelling.md`.
+`nitm eval build | freeze | run` is the free-text eval: labels written to a guide, frozen with
+a sha256 before the scan sends Gemma any line, then precision and recall for the regex alone,
+Gemma alone, and both. See `docs/eval-labelling.md`. The labelled lines name living people, so
+they stay on the machine; build and label your own with these commands.
 
 ## Ethics
 
@@ -103,7 +113,9 @@ and both. See `docs/eval-labelling.md`.
 - Living contributors appear only as counts, never by name. `out/`, `eval/`, `cache/` and
   `review.local.json` name living people, so they are git-ignored and stay on the machine.
   The snapshot stores living people's names only as short hashes.
-- Email addresses are stripped from every receipt that is shown.
+- Email addresses, including spelled-out ones, are stripped from every receipt that is shown.
+- `verified.json` keeps each approval's reason and second-source URL as the review record.
+  The page links to none of them.
 - No photos, no jump-scares, no ghost puns on real names. The spooky frame belongs to the
   machine, never to the person.
 
