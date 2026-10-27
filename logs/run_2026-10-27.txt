@@ -1,0 +1,723 @@
+# Names in the Machine: run log, 2026-10-27 17:37 IST
+# machine: the shared Linux box this was built on (Linux 6.12.94+, 8 CPUs, 15 GB RAM, no GPU)
+# os: Debian GNU/Linux 13 (trixie) · python 3.13.5 · ollama version is 0.40.9
+# model: gemma3:1b, digest 8648f39daa8f, temperature 0, seed 0, num_predict 48, one line per call
+# every number in the post comes from this file or the other logs in logs/
+
+## 1. eval labels, frozen before any model saw the lines
+# labelled in three independent passes over every line, run as separate AI agents that saw only
+# docs/eval-labelling.md and the raw lines (no regex or model output). A name is gold when at
+# least two passes agree. The three passes agreed on all 307 lines (0 disagreements); every
+# label was then read against its line during the build and none was changed.
+nitm eval freeze · 2026-10-27T17:37:14+05:30
+  lines                  307 (negative-nameless 18, negative-template 22, unit 267)
+  gold names             260 on 189 lines
+  lines sha256           6a9e4f000e825c3a7917e6827f81a53398272c497c3c96c39fa5e0d912bae5d4
+  labels sha256          77a44808274013c9ebfd42dc638a29fac919299cc18ba6bc445610b7620303f0
+
+# 17:39 IST: after the freeze and before any model call, a unit test found that the free-text
+# regex stopped at the gap in an Oxford comma (it dropped C in "A, B, and C"). Fixed in extract.by_names.
+# Labels and lines unchanged (sha256 above). The Gemma prompt was not changed after the freeze.
+
+## 2. Wikidata snapshot (fetched once; logs/snapshot_fetch_2026-10-27.txt has every query attempt)
+$ nitm snapshot info
+Wikidata snapshot, CC0 1.0 (Wikidata structured data)
+  retrieved   2026-10-27T17:31:07+05:30 to 2026-10-27T17:50:19+05:30
+  occupations                       330
+  deceased_by_occupation            2,923
+  deceased_by_software_link         333
+  people                            3,110
+  people_human                      3,104
+  no_death_date_by_occupation       48,121
+  no_death_date_people              51,889
+  no_death_date_name_hashes         60,416
+  queries                           288
+  rows_fetched                      190,914
+  failed_attempts                   5
+  incomplete  nothing
+  name index  5,124 keys
+
+## 3. scan, regex only (no model)
+$ nitm scan --no-model --pip-root /workspace --pip-root /home/box --out out/regex --log logs/run_2026-10-27.txt
+nitm scan · 2026-10-27 17:51 IST · regex only
+  command                nitm scan --no-model --pip-root /workspace --pip-root /home/box --out out/regex --log logs/run_2026-10-27.txt
+  sources                /usr/share/doc + 4 Python roots
+  files scanned          1,675: 791 copyright files (611 DEP-5) + 884 METADATA files
+  lines read             395,318
+  name-like strings      47,950 from the regex (Copyright lines 44,943 · author fields 2,018 · free text 989)
+  regex rejected         9,295 (org_word 8,894 · shape 386 · not_in_line 15)
+  license text stripped  11,566 lines + 1,972 sentences, before any model sees them
+  free-text credit lines 267 unique (922 in all)
+  Gemma                  off (--no-model): free text read by the regex only
+  names after validator  5,522 unique (regex 5,522 · Gemma 0 · only Gemma 0)
+  Wikidata matches       20 names match someone who died (snapshot 2026-10-27, 3,110 people)
+  homonym gate           removed 3 (unverifiable 3) · 17 names go to review (17 entries, 0 only via Gemma)
+  no death date          577 names match only people with no death date: left off
+  wall time              23.2 s reading · 23.2 s total
+--- scan summary (json)
+{
+ "sources": {
+  "doc_root": "/usr/share/doc",
+  "pip_roots": [
+   "/home/box",
+   "/usr/lib/python3/dist-packages",
+   "/usr/local/lib/python3.13/dist-packages",
+   "/workspace"
+  ]
+ },
+ "files": {
+  "copyright_files": 791,
+  "dep5_files": 611,
+  "metadata_files": 884,
+  "files_scanned": 1675,
+  "lines_read": 395318
+ },
+ "lines": {
+  "copyright_lines": 47319,
+  "person_field_lines": 2948,
+  "license_template_lines_stripped": 11566,
+  "license_template_sentences_stripped": 1972,
+  "credit_sentences_without_a_name": 827,
+  "credit_sentences_too_long": 19,
+  "free_text_credit_lines": 922,
+  "free_text_credit_lines_unique": 267
+ },
+ "regex": {
+  "name_like_strings": 47950,
+  "name_like_strings_by_method": {
+   "copyright": 44943,
+   "field": 2018,
+   "byline": 989
+  },
+  "rejected": {
+   "not_in_line": 15,
+   "org_word": 8894,
+   "shape": 386
+  },
+  "rejected_total": 9295,
+  "unique_names_kept": 5522,
+  "unique_names_kept_by_method": {
+   "copyright": 5082,
+   "field": 554,
+   "byline": 156
+  }
+ },
+ "gemma": {
+  "used": false,
+  "model": null,
+  "lines_sent": 0,
+  "fresh_calls": 0,
+  "cached_calls": 0,
+  "errors": 0,
+  "proposals": 0,
+  "rejected": {},
+  "rejected_total": 0,
+  "unique_names_kept": 0,
+  "unique_names_only_gemma": 0,
+  "latency_seconds": null,
+  "wall_seconds": 0.0
+ },
+ "names": {
+  "unique_names_after_validator": 5522
+ },
+ "read_seconds": 23.2,
+ "wall_seconds": 23.2,
+ "match": {
+  "names_matching_a_deceased_entry": 20,
+  "name_entry_pairs": 20,
+  "pairs_left_off_by_gate": {
+   "unverifiable": 3
+  },
+  "names_removed_by_gate": 3,
+  "names_removed_by_gate_by_reason": {
+   "unverifiable": 3
+  },
+  "names_passed_gate": 17,
+  "entries_passed_gate_for_review": 17,
+  "entries_passed_gate_only_via_gemma": 0,
+  "names_matching_only_no_death_date_entries": 577,
+  "names_not_in_snapshot": 4924
+ }
+}
+  next                   nitm verify   (local working files in out/regex/, git-ignored)
+
+## 4. scan with gemma3:1b (cold cache: no line had been sent to the model before this run)
+$ nitm scan --pip-root /workspace --pip-root /home/box --log logs/run_2026-10-27.txt
+nitm scan · 2026-10-27 17:52 IST · gemma3:1b
+  command                nitm scan --pip-root /workspace --pip-root /home/box --log logs/run_2026-10-27.txt
+  sources                /usr/share/doc + 4 Python roots
+  files scanned          1,675: 791 copyright files (611 DEP-5) + 884 METADATA files
+  lines read             395,318
+  name-like strings      47,950 from the regex (Copyright lines 44,943 · author fields 2,018 · free text 989)
+  regex rejected         9,295 (org_word 8,894 · shape 386 · not_in_line 15)
+  license text stripped  11,566 lines + 1,972 sentences, before any model sees them
+  free-text credit lines 267 unique (922 in all)
+  Gemma (gemma3:1b)     267 lines, one per call · 265 fresh, 0 cached, 2 errors
+                         303 names proposed · 59 rejected (shape 31 · org_word 12 · not_in_line 9 · bad_chars 7)
+                         latency min/median/max 0.42/1.19/42.23 s over 265 fresh calls
+  names after validator  5,536 unique (regex 5,522 · Gemma 185 · only Gemma 14)
+  Wikidata matches       21 names match someone who died (snapshot 2026-10-27, 3,110 people)
+  homonym gate           removed 3 (unverifiable 3) · 18 names go to review (18 entries, 1 only via Gemma)
+  no death date          579 names match only people with no death date: left off
+  wall time              12.2 s reading · 2252.2 s free text · 2264.5 s total
+--- scan summary (json)
+{
+ "sources": {
+  "doc_root": "/usr/share/doc",
+  "pip_roots": [
+   "/home/box",
+   "/usr/lib/python3/dist-packages",
+   "/usr/local/lib/python3.13/dist-packages",
+   "/workspace"
+  ]
+ },
+ "files": {
+  "copyright_files": 791,
+  "dep5_files": 611,
+  "metadata_files": 884,
+  "files_scanned": 1675,
+  "lines_read": 395318
+ },
+ "lines": {
+  "copyright_lines": 47319,
+  "person_field_lines": 2948,
+  "license_template_lines_stripped": 11566,
+  "license_template_sentences_stripped": 1972,
+  "credit_sentences_without_a_name": 827,
+  "credit_sentences_too_long": 19,
+  "free_text_credit_lines": 922,
+  "free_text_credit_lines_unique": 267
+ },
+ "regex": {
+  "name_like_strings": 47950,
+  "name_like_strings_by_method": {
+   "copyright": 44943,
+   "field": 2018,
+   "byline": 989
+  },
+  "rejected": {
+   "not_in_line": 15,
+   "org_word": 8894,
+   "shape": 386
+  },
+  "rejected_total": 9295,
+  "unique_names_kept": 5522,
+  "unique_names_kept_by_method": {
+   "copyright": 5082,
+   "field": 554,
+   "byline": 156
+  }
+ },
+ "gemma": {
+  "used": true,
+  "model": "gemma3:1b",
+  "lines_sent": 267,
+  "fresh_calls": 265,
+  "cached_calls": 0,
+  "errors": 2,
+  "proposals": 303,
+  "rejected": {
+   "bad_chars": 7,
+   "not_in_line": 9,
+   "org_word": 12,
+   "shape": 31
+  },
+  "rejected_total": 59,
+  "unique_names_kept": 185,
+  "unique_names_only_gemma": 14,
+  "latency_seconds": {
+   "n": 265,
+   "min": 0.42,
+   "median": 1.19,
+   "max": 42.23,
+   "total": 803.9
+  },
+  "wall_seconds": 2252.2
+ },
+ "names": {
+  "unique_names_after_validator": 5536
+ },
+ "read_seconds": 12.2,
+ "wall_seconds": 2264.5,
+ "match": {
+  "names_matching_a_deceased_entry": 21,
+  "name_entry_pairs": 21,
+  "pairs_left_off_by_gate": {
+   "unverifiable": 3
+  },
+  "names_removed_by_gate": 3,
+  "names_removed_by_gate_by_reason": {
+   "unverifiable": 3
+  },
+  "names_passed_gate": 18,
+  "entries_passed_gate_for_review": 18,
+  "entries_passed_gate_only_via_gemma": 1,
+  "names_matching_only_no_death_date_entries": 579,
+  "names_not_in_snapshot": 4935
+ }
+}
+  next                   nitm verify   (local working files in /workspace/hacktoberfest/week4/build/out/, git-ignored)
+# the box was shared and busy during this run: `uptime` at 18:20 IST read
+#   load average: 84.75, 188.43, 167.41   (1, 5, 15 minutes; 8 CPUs), and at the end of the run 17.42, 42.33, 96.84.
+# the 265 fresh calls add up to 803.9 s (sum of per-call wall times in cache/gemma.jsonl); the rest of the
+# free-text stage's 2252.2 s was the 2 failed calls and the overloaded machine. This run did not record
+# why the 2 calls failed; the scan now logs each error's type and duration.
+
+## 5. both scans again, after excluding the tool's own folder
+# Sections 3 and 4 used /workspace as a Python root, so they also read this repo's tests/fixtures/pip
+# (a copy of html2text's METADATA with an invented maintainer, made for the tests) and the tool's own
+# install record. The scan now skips its own tests/ folder and its own METADATA. The two scans below
+# supersede the counts in sections 3 and 4. Section 4's Gemma timings stand: the free-text lines are the
+# same 267, and the run below reads Gemma's answers from the cache (only lines without an answer are sent).
+
+### 5a. regex only
+$ nitm scan --no-model --pip-root /workspace --pip-root /home/box --out out/regex --log logs/run_2026-10-27.txt
+nitm scan · 2026-10-27 18:31 IST · regex only
+  command                nitm scan --no-model --pip-root /workspace --pip-root /home/box --out out/regex --log logs/run_2026-10-27.txt
+  sources                /usr/share/doc + 4 Python roots
+  files scanned          1,682: 800 copyright files (619 DEP-5) + 882 METADATA files
+  lines read             396,970
+  name-like strings      48,247 from the regex (Copyright lines 45,238 · author fields 2,019 · free text 990)
+  regex rejected         9,397 (org_word 8,996 · shape 386 · not_in_line 15)
+  license text stripped  11,621 lines + 1,972 sentences, before any model sees them
+  free-text credit lines 269 unique (926 in all)
+  Gemma                  off (--no-model): free text read by the regex only
+  names after validator  5,555 unique (regex 5,555 · Gemma 0 · only Gemma 0)
+  Wikidata matches       20 names match someone who died (snapshot 2026-10-27, 3,110 people)
+  homonym gate           removed 3 (unverifiable 3) · 17 names go to review (17 entries, 0 only via Gemma)
+  no death date          577 names match only people with no death date: left off
+  wall time              8.1 s reading · 8.1 s total
+--- scan summary (json)
+{
+ "sources": {
+  "doc_root": "/usr/share/doc",
+  "pip_roots": [
+   "/home/box",
+   "/usr/lib/python3/dist-packages",
+   "/usr/local/lib/python3.13/dist-packages",
+   "/workspace"
+  ]
+ },
+ "files": {
+  "copyright_files": 800,
+  "dep5_files": 619,
+  "metadata_files": 882,
+  "files_scanned": 1682,
+  "lines_read": 396970
+ },
+ "lines": {
+  "copyright_lines": 47617,
+  "person_field_lines": 2950,
+  "license_template_lines_stripped": 11621,
+  "license_template_sentences_stripped": 1972,
+  "credit_sentences_without_a_name": 830,
+  "credit_sentences_too_long": 19,
+  "free_text_credit_lines": 926,
+  "free_text_credit_lines_unique": 269
+ },
+ "regex": {
+  "name_like_strings": 48247,
+  "name_like_strings_by_method": {
+   "copyright": 45238,
+   "field": 2019,
+   "byline": 990
+  },
+  "rejected": {
+   "not_in_line": 15,
+   "org_word": 8996,
+   "shape": 386
+  },
+  "rejected_total": 9397,
+  "unique_names_kept": 5555,
+  "unique_names_kept_by_method": {
+   "copyright": 5116,
+   "field": 554,
+   "byline": 157
+  }
+ },
+ "gemma": {
+  "used": false,
+  "model": null,
+  "lines_sent": 0,
+  "fresh_calls": 0,
+  "cached_calls": 0,
+  "errors": 0,
+  "error_kinds": {},
+  "proposals": 0,
+  "rejected": {},
+  "rejected_total": 0,
+  "unique_names_kept": 0,
+  "unique_names_only_gemma": 0,
+  "latency_seconds": null,
+  "wall_seconds": 0.0
+ },
+ "names": {
+  "unique_names_after_validator": 5555
+ },
+ "read_seconds": 8.1,
+ "wall_seconds": 8.1,
+ "match": {
+  "names_matching_a_deceased_entry": 20,
+  "name_entry_pairs": 20,
+  "pairs_left_off_by_gate": {
+   "unverifiable": 3
+  },
+  "names_removed_by_gate": 3,
+  "names_removed_by_gate_by_reason": {
+   "unverifiable": 3
+  },
+  "names_passed_gate": 17,
+  "entries_passed_gate_for_review": 17,
+  "entries_passed_gate_only_via_gemma": 0,
+  "names_matching_only_no_death_date_entries": 577,
+  "names_not_in_snapshot": 4957
+ }
+}
+  next                   nitm verify   (local working files in out/regex/, git-ignored)
+
+### 5b. with gemma3:1b (answers from the cache of section 4)
+$ nitm scan --pip-root /workspace --pip-root /home/box --log logs/run_2026-10-27.txt
+nitm scan · 2026-10-27 18:31 IST · gemma3:1b
+  command                nitm scan --pip-root /workspace --pip-root /home/box --log logs/run_2026-10-27.txt
+  sources                /usr/share/doc + 4 Python roots
+  files scanned          1,682: 800 copyright files (619 DEP-5) + 882 METADATA files
+  lines read             396,970
+  name-like strings      48,247 from the regex (Copyright lines 45,238 · author fields 2,019 · free text 990)
+  regex rejected         9,397 (org_word 8,996 · shape 386 · not_in_line 15)
+  license text stripped  11,621 lines + 1,972 sentences, before any model sees them
+  free-text credit lines 269 unique (926 in all)
+  Gemma (gemma3:1b)     269 lines, one per call · 4 fresh, 265 cached, 0 errors
+                         307 names proposed · 60 rejected (shape 32 · org_word 12 · not_in_line 9 · bad_chars 7)
+                         latency min/median/max 0.69/0.85/1.15 s over 4 fresh calls
+  names after validator  5,569 unique (regex 5,555 · Gemma 185 · only Gemma 14)
+  Wikidata matches       21 names match someone who died (snapshot 2026-10-27, 3,110 people)
+  homonym gate           removed 3 (unverifiable 3) · 18 names go to review (18 entries, 1 only via Gemma)
+  no death date          579 names match only people with no death date: left off
+  wall time              6.9 s reading · 3.6 s free text · 10.5 s total
+--- scan summary (json)
+{
+ "sources": {
+  "doc_root": "/usr/share/doc",
+  "pip_roots": [
+   "/home/box",
+   "/usr/lib/python3/dist-packages",
+   "/usr/local/lib/python3.13/dist-packages",
+   "/workspace"
+  ]
+ },
+ "files": {
+  "copyright_files": 800,
+  "dep5_files": 619,
+  "metadata_files": 882,
+  "files_scanned": 1682,
+  "lines_read": 396970
+ },
+ "lines": {
+  "copyright_lines": 47617,
+  "person_field_lines": 2950,
+  "license_template_lines_stripped": 11621,
+  "license_template_sentences_stripped": 1972,
+  "credit_sentences_without_a_name": 830,
+  "credit_sentences_too_long": 19,
+  "free_text_credit_lines": 926,
+  "free_text_credit_lines_unique": 269
+ },
+ "regex": {
+  "name_like_strings": 48247,
+  "name_like_strings_by_method": {
+   "copyright": 45238,
+   "field": 2019,
+   "byline": 990
+  },
+  "rejected": {
+   "not_in_line": 15,
+   "org_word": 8996,
+   "shape": 386
+  },
+  "rejected_total": 9397,
+  "unique_names_kept": 5555,
+  "unique_names_kept_by_method": {
+   "copyright": 5116,
+   "field": 554,
+   "byline": 157
+  }
+ },
+ "gemma": {
+  "used": true,
+  "model": "gemma3:1b",
+  "lines_sent": 269,
+  "fresh_calls": 4,
+  "cached_calls": 265,
+  "errors": 0,
+  "error_kinds": {},
+  "proposals": 307,
+  "rejected": {
+   "bad_chars": 7,
+   "not_in_line": 9,
+   "org_word": 12,
+   "shape": 32
+  },
+  "rejected_total": 60,
+  "unique_names_kept": 185,
+  "unique_names_only_gemma": 14,
+  "latency_seconds": {
+   "n": 4,
+   "min": 0.69,
+   "median": 0.85,
+   "max": 1.15,
+   "total": 3.5
+  },
+  "wall_seconds": 3.6
+ },
+ "names": {
+  "unique_names_after_validator": 5569
+ },
+ "read_seconds": 6.9,
+ "wall_seconds": 10.5,
+ "match": {
+  "names_matching_a_deceased_entry": 21,
+  "name_entry_pairs": 21,
+  "pairs_left_off_by_gate": {
+   "unverifiable": 3
+  },
+  "names_removed_by_gate": 3,
+  "names_removed_by_gate_by_reason": {
+   "unverifiable": 3
+  },
+  "names_passed_gate": 18,
+  "entries_passed_gate_for_review": 18,
+  "entries_passed_gate_only_via_gemma": 1,
+  "names_matching_only_no_death_date_entries": 579,
+  "names_not_in_snapshot": 4968
+ }
+}
+  next                   nitm verify   (local working files in /workspace/hacktoberfest/week4/build/out/, git-ignored)
+# Correction to the note at the top of section 5: at 18:26 IST, while section 4 was running, someone
+# installed 9 packages on this shared machine (bind9-dnsutils, whois and their libraries; see
+# /var/log/dpkg.log). So section 5 reads 800 copyright files and 269 unique free-text lines, not 791
+# and 267. 5b sent 4 lines to Gemma: the 2 that failed in section 4 and 2 from the new packages.
+# Section 4's 265 timed calls stand. The eval below uses the 307 lines frozen at 17:37 IST.
+
+## 6. free-text eval: regex only vs Gemma vs both, on the frozen labels
+$ nitm eval run --log logs/run_2026-10-27.txt
+nitm eval run · 2026-10-27 18:39 IST · gemma3:1b
+  labels frozen          2026-10-27T17:37:14+05:30 (labels sha256 77a44808274013c9…)
+  lines                  307 (negative-nameless 18, negative-template 22, unit 267)
+  gold names             260 on 189 lines
+  regex only             precision 0.960 · recall 0.738   (tp 192 · fp 8 · fn 68)
+  Gemma, unvalidated     precision 0.837 · recall 0.950   (tp 247 · fp 48 · fn 13)
+  Gemma, validated       precision 0.996 · recall 0.946   (tp 246 · fp 1 · fn 14)
+  regex + Gemma          precision 0.965 · recall 0.965   (tp 251 · fp 9 · fn 9)
+  true names only Gemma found 59 · only the regex found 5
+  Gemma rejections       shape 37 · org_word 13 · not_in_line 9 · bad_chars 7 · denylist 3
+  denylisted proposals   Gnomovision ×1, James Hacker ×1, Ty Coon ×1
+  Gemma calls            40 fresh · 267 cached · 0 errors
+  latency (fresh calls)  min 0.85 s · median 3.31 s · max 111.72 s (n 40)
+--- eval counts (json)
+{
+ "lines": 307,
+ "lines_by_kind": {
+  "unit": 267,
+  "negative-template": 22,
+  "negative-nameless": 18
+ },
+ "gold_names": 260,
+ "lines_with_a_person": 189,
+ "regex": {
+  "tp": 192,
+  "fp": 8,
+  "fn": 68,
+  "precision": 0.96,
+  "recall": 0.738
+ },
+ "model": "gemma3:1b",
+ "gemma_raw": {
+  "tp": 247,
+  "fp": 48,
+  "fn": 13,
+  "precision": 0.837,
+  "recall": 0.95
+ },
+ "gemma": {
+  "tp": 246,
+  "fp": 1,
+  "fn": 14,
+  "precision": 0.996,
+  "recall": 0.946
+ },
+ "regex_plus_gemma": {
+  "tp": 251,
+  "fp": 9,
+  "fn": 9,
+  "precision": 0.965,
+  "recall": 0.965
+ },
+ "true_names_only_gemma_found": 59,
+ "true_names_only_regex_found": 5,
+ "gemma_rejections": {
+  "bad_chars": 7,
+  "denylist": 3,
+  "not_in_line": 9,
+  "org_word": 13,
+  "shape": 37
+ },
+ "gemma_denylist_proposals": {
+  "Gnomovision": 1,
+  "James Hacker": 1,
+  "Ty Coon": 1
+ },
+ "gemma_calls": {
+  "fresh": 40,
+  "cached": 267,
+  "errors": 0
+ },
+ "gemma_latency_seconds": {
+  "n": 40,
+  "min": 0.85,
+  "median": 3.31,
+  "max": 111.72,
+  "total": 406.7
+ },
+ "wall_seconds": 406.7
+}
+
+## 7. human review (nitm verify): 17 people passed the gate (18 names; Thomas Lord and Tom Lord are one Wikidata item)
+# each match was checked against the receipts on this machine, the Wikidata item and a second source;
+# an independent second check tried to refute every approval. Approvals:
+$ nitm verify --approve Q92761 --primary dpkg/copyright:6 --probe dpkg-log:/var/log/dpkg.log --source https://en.wikipedia.org/wiki/Ian_Murdock --reason "These 1994-1998 Debian files (dpkg, adduser, base-files, base-passwd) carry his debian.org address. Wikipedia: founder of Debian; its dpkg article credits him with the first dpkg in 1994."
+saved: Ian Murdock (1973–2015)
+$ nitm verify --approve Q550635 --primary zlib1g/copyright:10 --probe rdepends:zlib1g --source https://en.wikipedia.org/wiki/Phil_Katz --reason "zlib's copyright file says the deflate format was defined by Phil Katz, as RFC 1951 does. Wikipedia: author of PKZIP, 1962-2000."
+saved: Phil Katz (1962–2000)
+$ nitm verify --approve Q110051708 --primary libpython3.13-minimal/copyright:510 --probe rdepends:libpython3.13-minimal --source https://lwn.net/Articles/878325/ --reason "Python's notices pair him with Secret Labs AB on xmlrpclib, unicodeobject.h and _subprocess.c (1999-2004). LWN's 2021 memorial: early Python contributor and Secret Labs co-founder. Wikidata's birth date is only century-precise, so only the death year is shown."
+saved: Fredrik Lundh (died 2021)
+$ nitm verify --approve Q302817 --probe dist-count:html2text --source https://en.wikipedia.org/wiki/Aaron_Swartz --reason "html2text's METADATA and AUTHORS name him as its original author, with his own domain. Wikipedia says he wrote Markdown's html2text translator."
+saved: Aaron Swartz (1986–2013)
+$ nitm verify --approve Q17278587 --probe dist-count:matplotlib --source https://en.wikipedia.org/wiki/John_D._Hunter --reason "matplotlib's Author field. matplotlib's own history page and Wikipedia name John D. Hunter (1968-2012) as its original author."
+saved: John D. Hunter (1968–2012)
+$ nitm verify --approve Q106193575 --probe rdepends:libbsd0 --source https://www.netbsd.org/people/developers.html --reason "libbsd's fmtcheck.c came from NetBSD, contributed by Allen Briggs in 2000. NetBSD's developer list marks him with a dagger and 2012-03-03, the date Wikidata has."
+saved: Allen Kenneth Briggs (1970–2012)
+$ nitm verify --approve Q37632040 --probe none --source https://en.wikipedia.org/wiki/Andrei_Chernov --reason "The 1997 notice is newlib's setlocale.h, copied from FreeBSD, where the file's first commit is by Andrey A. Chernov (ache). Wikipedia: FreeBSD core team member, 1966-2017. The code is not built for this machine, so nothing is measured."
+saved: Andrey Aleksandrovich Chernov (1966–2017)
+$ nitm verify --approve Q2876598 --primary libcdio19t64/copyright:13 --probe rdepends:libcdio19t64 --source https://de.wikipedia.org/wiki/J%C3%B6rg_Schilling --reason "libcdio's iso9660 headers carry 'J. Schilling' (1999-2000) from mkisofs and cdrtools, which Wikipedia says he wrote and maintained. Wikipedia: died 2021."
+saved: Jörg Schilling (1955–2021)
+$ nitm verify --approve Q93033 --primary libavfilter10/copyright:41 --probe rdepends:libavfilter10 --source "https://en.wikipedia.org/wiki/John_Walker_(programmer)" --reason "FFmpeg's '2000, John Walker' is the ciescope filter's notice, ported from Netpbm's ppmcie.c, which credits John Walker of fourmilab.ch; Wikidata gives fourmilab.ch as his site. Wikipedia: founder of Autodesk, 1949-2024."
+saved: John Walker (1949–2024)
+$ nitm verify --approve Q2167581 --primary libnettle8t64/copyright:560 --probe rdepends:libnettle8t64 --source https://en.wikipedia.org/wiki/Ross_J._Anderson --reason "Nettle's Serpent files credit the cipher's three designers, Ross Anderson first. Wikipedia: co-designer of Serpent, 1956-2024."
+saved: Ross J. Anderson (1956–2024)
+$ nitm verify --approve Qwithdrawn --primary [withdrawn] --probe none --source https://en.wikipedia.org/wiki/withdrawn --reason "[withdrawn]'s test font is credited to [withdrawn] (2020) and came from his GitHub account, which Wikidata lists. His death in 2026 is reported by Wikipedia and Le Monde. The font is in [withdrawn]'s source, not installed here, so nothing is measured."
+saved: [withdrawn] (1994–2026)
+$ nitm verify --approve Q133867446 --primary diffutils/copyright:9 --probe none --source https://lwn.net/Articles/901807/ --reason "diffutils' ChangeLog-2008 has Tom Lord introducing sdiff on 16 Sep 1991 from an FSF machine; glibc's 1995 regex test suite is his. LWN's July 2022 notice and Wikidata (FSF and Carnegie Mellon) describe the same person. diffutils is Essential, so no package declares a dependency on it: nothing is measured."
+saved: Thomas Lord (1966–2022)
+# Turned down at review: 5. In all five the receipt's person is a different person with the same name
+# (dates after the Wikidata death, a different career, or the contributor still publishing software).
+# The decisions and reasons stay in review.local.json on this machine, because a turned-down match is
+# usually a living person who shares a name with someone who died. One of the five was the only match
+# that came from Gemma alone (a name-first line in a contributor list).
+
+## 8. still working: one measurement per card where an honest one exists (the command is printed on the card)
+$ nitm still --pip-root /workspace --pip-root /home/box --log logs/run_2026-10-27.txt
+nitm still · 2026-10-27 18:51 IST
+  Ian Murdock: /var/log/dpkg.log on this machine records 710 package installs, upgrades and removals.
+      $ grep -cE '^\S+ \S+ (install|upgrade|remove|purge) ' /var/log/dpkg.log
+      measured 2026-10-27T18:51+05:30
+  Phil Katz: 83 installed packages on this machine depend on zlib1g.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances zlib1g | tail -n +3 | tr -d ' |' | sort -u | grep -vx zlib1g | wc -l
+      measured 2026-10-27T18:51+05:30
+  Fredrik Lundh: 2 installed packages on this machine depend on libpython3.13-minimal.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libpython3.13-minimal | tail -n +3 | tr -d ' |' | sort -u | grep -vx libpython3.13-minimal | wc -l
+      measured 2026-10-27T18:51+05:30
+  Aaron Swartz: 1 Python environments read by this scan have html2text installed.
+      $ find /home/box /usr/lib/python3/dist-packages /usr/local/lib/python3.13/dist-packages /workspace -path '*.dist-info/METADATA' -not -path '*/node_modules/*' -not -path '*/.cache/*' -not -path '/workspace/hacktoberfest/week4/build/tests/*' 2>/dev/null | xargs -r grep -lix 'Name: html2text' | wc -l
+      measured 2026-10-27T18:51+05:30
+  John D. Hunter: 2 Python environments read by this scan have matplotlib installed.
+      $ find /home/box /usr/lib/python3/dist-packages /usr/local/lib/python3.13/dist-packages /workspace -path '*.dist-info/METADATA' -not -path '*/node_modules/*' -not -path '*/.cache/*' -not -path '/workspace/hacktoberfest/week4/build/tests/*' 2>/dev/null | xargs -r grep -lix 'Name: matplotlib' | wc -l
+      measured 2026-10-27T18:51+05:30
+  Allen Kenneth Briggs: 5 installed packages on this machine depend on libbsd0.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libbsd0 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libbsd0 | wc -l
+      measured 2026-10-27T18:51+05:30
+  Jörg Schilling: 2 installed packages on this machine depend on libcdio19t64.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libcdio19t64 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libcdio19t64 | wc -l
+      measured 2026-10-27T18:51+05:30
+  John Walker: 3 installed packages on this machine depend on libavfilter10.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libavfilter10 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libavfilter10 | wc -l
+      measured 2026-10-27T18:51+05:30
+  Ross J. Anderson: 8 installed packages on this machine depend on libnettle8t64.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libnettle8t64 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libnettle8t64 | wc -l
+      measured 2026-10-27T18:51+05:30
+# re-measured below after fixing singular wording in the sentence templates ("1 Python environments")
+$ nitm still --pip-root /workspace --pip-root /home/box --log logs/run_2026-10-27.txt
+nitm still · 2026-10-27 18:51 IST
+  Ian Murdock: /var/log/dpkg.log on this machine records 710 package installs, upgrades and removals.
+      $ grep -cE '^\S+ \S+ (install|upgrade|remove|purge) ' /var/log/dpkg.log
+      measured 2026-10-27T18:51+05:30
+  Phil Katz: 83 installed packages on this machine depend on zlib1g.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances zlib1g | tail -n +3 | tr -d ' |' | sort -u | grep -vx zlib1g | wc -l
+      measured 2026-10-27T18:51+05:30
+  Fredrik Lundh: 2 installed packages on this machine depend on libpython3.13-minimal.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libpython3.13-minimal | tail -n +3 | tr -d ' |' | sort -u | grep -vx libpython3.13-minimal | wc -l
+      measured 2026-10-27T18:51+05:30
+  Aaron Swartz: 1 Python environment read by this scan has html2text installed.
+      $ find /home/box /usr/lib/python3/dist-packages /usr/local/lib/python3.13/dist-packages /workspace -path '*.dist-info/METADATA' -not -path '*/node_modules/*' -not -path '*/.cache/*' -not -path '/workspace/hacktoberfest/week4/build/tests/*' 2>/dev/null | xargs -r grep -lix 'Name: html2text' | wc -l
+      measured 2026-10-27T18:51+05:30
+  John D. Hunter: 2 Python environments read by this scan have matplotlib installed.
+      $ find /home/box /usr/lib/python3/dist-packages /usr/local/lib/python3.13/dist-packages /workspace -path '*.dist-info/METADATA' -not -path '*/node_modules/*' -not -path '*/.cache/*' -not -path '/workspace/hacktoberfest/week4/build/tests/*' 2>/dev/null | xargs -r grep -lix 'Name: matplotlib' | wc -l
+      measured 2026-10-27T18:51+05:30
+  Allen Kenneth Briggs: 5 installed packages on this machine depend on libbsd0.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libbsd0 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libbsd0 | wc -l
+      measured 2026-10-27T18:51+05:30
+  Jörg Schilling: 2 installed packages on this machine depend on libcdio19t64.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libcdio19t64 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libcdio19t64 | wc -l
+      measured 2026-10-27T18:51+05:30
+  John Walker: 3 installed packages on this machine depend on libavfilter10.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libavfilter10 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libavfilter10 | wc -l
+      measured 2026-10-27T18:51+05:30
+  Ross J. Anderson: 8 installed packages on this machine depend on libnettle8t64.
+      $ apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libnettle8t64 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libnettle8t64 | wc -l
+      measured 2026-10-27T18:51+05:30
+
+## 9. the page
+$ nitm page -o docs/ofrenda.html
+wrote docs/ofrenda.html: 12 cards
+$ grep -c @ docs/ofrenda.html
+0
+page.check problems: none
+cards: 12 | death-circumstance words found: 0
+# re-rendered after a wording fix in the cards' 'Found by' line (methods in pipeline order); same 12 cards
+$ nitm page -o docs/ofrenda.html
+wrote docs/ofrenda.html: 12 cards
+$ grep -c @ docs/ofrenda.html
+0
+
+## 10. the funnel, in one place (scan numbers from section 5b; review from section 7)
+  files scanned                      1,682 (800 copyright files + 882 Python METADATA files)
+  lines read                         396,970
+  name-like strings                  48,247 from the regex, plus 307 names proposed by Gemma
+  rejected by the validator          9,397 regex strings and 60 Gemma proposals
+  unique names after the validator   5,569 (only Gemma found 14)
+  names matching someone who died    21
+  removed by the homonym gate        3 (unverifiable 3)
+  names that passed the gate         18 (one Wikidata item under two names, so 17 people)
+  removed at human review            5 (all five: same name, different person)
+  verified people                    12
+  verified people only Gemma found   0
+  left off for no death date         579 names match only people on Wikidata with no death date
+
+## 11. receipts per verified person (counted by the tool: file lines that name them)
+  Ian Murdock                      1973–2015    12 receipts in  6 files, 2 with other names removed; found by byline, copyright, gemma
+  Phil Katz                        1962–2000     1 receipts in  1 files; found by byline, gemma
+  Fredrik Lundh                    died 2021    15 receipts in  5 files; found by copyright
+  Aaron Swartz                     1986–2013     1 receipts in  1 files; found by field
+  John D. Hunter                   1968–2012     1 receipts in  1 files, 1 with other names removed; found by field
+  Allen Kenneth Briggs             1970–2012     1 receipts in  1 files; found by copyright
+  Andrey Aleksandrovich Chernov    1966–2017    19 receipts in 19 files; found by copyright
+  Jörg Schilling                   1955–2021     3 receipts in  3 files; found by copyright
+  John Walker                      1949–2024     9 receipts in  9 files; found by copyright
+  Ross J. Anderson                 1956–2024     2 receipts in  2 files, 2 with other names removed; found by copyright
+  [withdrawn]                 1994–2026     3 receipts in  3 files; found by copyright
+  Thomas Lord                      1966–2022     5 receipts in  5 files; found by byline, copyright, gemma
+
+## 12. tests (no model, no network)
+$ python -m pytest -q
+123 passed in 0.42s
+
+# end of run log, 2026-10-27 18:57 IST

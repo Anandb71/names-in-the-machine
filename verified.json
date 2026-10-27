@@ -1,0 +1,1142 @@
+{
+ "about": "Only entries in this file can appear on the page. A person approved each one.",
+ "people": [
+  {
+   "qid": "Q92761",
+   "name": "Ian Murdock",
+   "keys": [
+    "ian murdock"
+   ],
+   "years": "1973–2015",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "These 1994-1998 Debian files (dpkg, adduser, base-files, base-passwd) carry his debian.org address. Wikipedia: founder of Debian; its dpkg article credits him with the first dpkg in 1994.",
+   "second_source": "https://en.wikipedia.org/wiki/Ian_Murdock",
+   "found_by": [
+    "byline",
+    "copyright",
+    "gemma"
+   ],
+   "primary_receipt": 10,
+   "receipts": [
+    {
+     "file": "adduser/copyright",
+     "line": 8,
+     "text": "1995 Ian Murdock <email removed>",
+     "package": "adduser",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "adduser/copyright",
+     "line": 30,
+     "text": "1995 Ian A. Murdock <email removed>",
+     "package": "adduser",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "adduser/copyright",
+     "line": 46,
+     "text": "1995 Ian A. Murdock <email removed>",
+     "package": "adduser",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "adduser/copyright",
+     "line": 59,
+     "text": "1995 Ian A. Murdock <email removed>",
+     "package": "adduser",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "adduser/copyright",
+     "line": 101,
+     "text": "Copyright: 1994 Ian A. Murdock <email removed>",
+     "package": "adduser",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "adduser/copyright",
+     "line": 113,
+     "text": "Copyright: 1994 Ian A. Murdock <email removed>",
+     "package": "adduser",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "adduser/copyright",
+     "line": 136,
+     "text": "1995 Ian A. Murdock <email removed>",
+     "package": "adduser",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "base-files/copyright",
+     "line": 4,
+     "text": "Miscellaneous files. These files were written by Ian Murdock / <email removed> and <name removed> <email removed>.",
+     "package": "base-files",
+     "source": "doc",
+     "methods": [
+      "byline",
+      "gemma"
+     ],
+     "others": 1
+    },
+    {
+     "file": "base-passwd/copyright",
+     "line": 14,
+     "text": "Copyright: PD; Originally written by Ian Murdock <email removed> and",
+     "package": "base-passwd",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "debianutils/copyright",
+     "line": 12,
+     "text": "Copyright (C) 1995 - 1998, Ian A. Murdock <email removed>",
+     "package": "debianutils",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "dpkg/copyright",
+     "line": 6,
+     "text": "Copyright © 1994 Ian Murdock <email removed>",
+     "package": "dpkg",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "findutils/copyright",
+     "line": 91,
+     "text": "Copyright: Ian Murdock (before 1996) 1996-2001, <name removed> 2002, <name removed> 2003-2024, <name removed>",
+     "package": "findutils",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 3
+    }
+   ],
+   "still": {
+    "probe": "dpkg-log",
+    "arg": "/var/log/dpkg.log",
+    "value": 710,
+    "sentence": "/var/log/dpkg.log on this machine records 710 package installs, upgrades and removals.",
+    "command": "grep -cE '^\\S+ \\S+ (install|upgrade|remove|purge) ' /var/log/dpkg.log",
+    "measured_at": "2026-10-27T18:51+05:30",
+    "error": null
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Q550635",
+   "name": "Phil Katz",
+   "keys": [
+    "phil katz"
+   ],
+   "years": "1962–2000",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "zlib's copyright file says the deflate format was defined by Phil Katz, as RFC 1951 does. Wikipedia: author of PKZIP, 1962-2000.",
+   "second_source": "https://en.wikipedia.org/wiki/Phil_Katz",
+   "found_by": [
+    "byline",
+    "gemma"
+   ],
+   "primary_receipt": 0,
+   "receipts": [
+    {
+     "file": "zlib1g/copyright",
+     "line": 10,
+     "text": "The deflate format used by zlib was defined by Phil Katz. The deflate",
+     "package": "zlib1g",
+     "source": "doc",
+     "methods": [
+      "byline",
+      "gemma"
+     ],
+     "others": 0
+    }
+   ],
+   "still": {
+    "probe": "rdepends",
+    "arg": "zlib1g",
+    "value": 83,
+    "sentence": "83 installed packages on this machine depend on zlib1g.",
+    "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances zlib1g | tail -n +3 | tr -d ' |' | sort -u | grep -vx zlib1g | wc -l",
+    "measured_at": "2026-10-27T18:51+05:30",
+    "error": null
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Q110051708",
+   "name": "Fredrik Lundh",
+   "keys": [
+    "fredrik lundh"
+   ],
+   "years": "died 2021",
+   "years_note": "birth date missing or imprecise on Wikidata",
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "Python's notices pair him with Secret Labs AB on xmlrpclib, unicodeobject.h and _subprocess.c (1999-2004). LWN's 2021 memorial: early Python contributor and Secret Labs co-founder. Wikidata's birth date is only century-precise, so only the death year is shown.",
+   "second_source": "https://lwn.net/Articles/878325/",
+   "found_by": [
+    "copyright"
+   ],
+   "primary_receipt": 0,
+   "receipts": [
+    {
+     "file": "libpython3.13-minimal/copyright",
+     "line": 510,
+     "text": "Copyright (c) 1999-2002 by Fredrik Lundh",
+     "package": "libpython3.13-minimal",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libpython3.13-minimal/copyright",
+     "line": 603,
+     "text": "Copyright: (c) 1999 by Fredrik Lundh.",
+     "package": "libpython3.13-minimal",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libpython3.13-minimal/copyright",
+     "line": 947,
+     "text": "Copyright: Copyright (c) 2004 by Fredrik Lundh <email removed>",
+     "package": "libpython3.13-minimal",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libpython3.13-stdlib/copyright",
+     "line": 510,
+     "text": "Copyright (c) 1999-2002 by Fredrik Lundh",
+     "package": "libpython3.13-stdlib",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libpython3.13-stdlib/copyright",
+     "line": 603,
+     "text": "Copyright: (c) 1999 by Fredrik Lundh.",
+     "package": "libpython3.13-stdlib",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libpython3.13-stdlib/copyright",
+     "line": 947,
+     "text": "Copyright: Copyright (c) 2004 by Fredrik Lundh <email removed>",
+     "package": "libpython3.13-stdlib",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "python3.13-minimal/copyright",
+     "line": 510,
+     "text": "Copyright (c) 1999-2002 by Fredrik Lundh",
+     "package": "python3.13-minimal",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "python3.13-minimal/copyright",
+     "line": 603,
+     "text": "Copyright: (c) 1999 by Fredrik Lundh.",
+     "package": "python3.13-minimal",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "python3.13-minimal/copyright",
+     "line": 947,
+     "text": "Copyright: Copyright (c) 2004 by Fredrik Lundh <email removed>",
+     "package": "python3.13-minimal",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "python3.13-venv/copyright",
+     "line": 510,
+     "text": "Copyright (c) 1999-2002 by Fredrik Lundh",
+     "package": "python3.13-venv",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "python3.13-venv/copyright",
+     "line": 603,
+     "text": "Copyright: (c) 1999 by Fredrik Lundh.",
+     "package": "python3.13-venv",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "python3.13-venv/copyright",
+     "line": 947,
+     "text": "Copyright: Copyright (c) 2004 by Fredrik Lundh <email removed>",
+     "package": "python3.13-venv",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "python3.13/copyright",
+     "line": 510,
+     "text": "Copyright (c) 1999-2002 by Fredrik Lundh",
+     "package": "python3.13",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "python3.13/copyright",
+     "line": 603,
+     "text": "Copyright: (c) 1999 by Fredrik Lundh.",
+     "package": "python3.13",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "python3.13/copyright",
+     "line": 947,
+     "text": "Copyright: Copyright (c) 2004 by Fredrik Lundh <email removed>",
+     "package": "python3.13",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    }
+   ],
+   "still": {
+    "probe": "rdepends",
+    "arg": "libpython3.13-minimal",
+    "value": 2,
+    "sentence": "2 installed packages on this machine depend on libpython3.13-minimal.",
+    "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libpython3.13-minimal | tail -n +3 | tr -d ' |' | sort -u | grep -vx libpython3.13-minimal | wc -l",
+    "measured_at": "2026-10-27T18:51+05:30",
+    "error": null
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Q302817",
+   "name": "Aaron Swartz",
+   "keys": [
+    "aaron swartz"
+   ],
+   "years": "1986–2013",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "html2text's METADATA and AUTHORS name him as its original author, with his own domain. Wikipedia says he wrote Markdown's html2text translator.",
+   "second_source": "https://en.wikipedia.org/wiki/Aaron_Swartz",
+   "found_by": [
+    "field"
+   ],
+   "primary_receipt": 0,
+   "receipts": [
+    {
+     "file": "html2text-2025.4.15.dist-info/METADATA",
+     "line": 5,
+     "text": "Author-email: Aaron Swartz <email removed>",
+     "package": "html2text",
+     "source": "pip",
+     "methods": [
+      "field"
+     ],
+     "others": 0
+    }
+   ],
+   "still": {
+    "probe": "dist-count",
+    "arg": "html2text",
+    "value": 1,
+    "sentence": "1 Python environment read by this scan has html2text installed.",
+    "command": "find /home/box /usr/lib/python3/dist-packages /usr/local/lib/python3.13/dist-packages /workspace -path '*.dist-info/METADATA' -not -path '*/node_modules/*' -not -path '*/.cache/*' -not -path '/workspace/hacktoberfest/week4/build/tests/*' 2>/dev/null | xargs -r grep -lix 'Name: html2text' | wc -l",
+    "measured_at": "2026-10-27T18:51+05:30",
+    "error": null
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Q17278587",
+   "name": "John D. Hunter",
+   "keys": [
+    "john hunter"
+   ],
+   "years": "1968–2012",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "matplotlib's Author field. matplotlib's own history page and Wikipedia name John D. Hunter (1968-2012) as its original author.",
+   "second_source": "https://en.wikipedia.org/wiki/John_D._Hunter",
+   "found_by": [
+    "field"
+   ],
+   "primary_receipt": 0,
+   "receipts": [
+    {
+     "file": "matplotlib-3.11.2.dist-info/METADATA",
+     "line": 5,
+     "text": "Author: John D. Hunter, <name removed>",
+     "package": "matplotlib",
+     "source": "pip",
+     "methods": [
+      "field"
+     ],
+     "others": 1
+    }
+   ],
+   "still": {
+    "probe": "dist-count",
+    "arg": "matplotlib",
+    "value": 2,
+    "sentence": "2 Python environments read by this scan have matplotlib installed.",
+    "command": "find /home/box /usr/lib/python3/dist-packages /usr/local/lib/python3.13/dist-packages /workspace -path '*.dist-info/METADATA' -not -path '*/node_modules/*' -not -path '*/.cache/*' -not -path '/workspace/hacktoberfest/week4/build/tests/*' 2>/dev/null | xargs -r grep -lix 'Name: matplotlib' | wc -l",
+    "measured_at": "2026-10-27T18:51+05:30",
+    "error": null
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Q106193575",
+   "name": "Allen Kenneth Briggs",
+   "keys": [
+    "allen briggs",
+    "allen kenneth briggs"
+   ],
+   "years": "1970–2012",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "libbsd's fmtcheck.c came from NetBSD, contributed by Allen Briggs in 2000. NetBSD's developer list marks him with a dagger and 2012-03-03, the date Wikidata has.",
+   "second_source": "https://www.netbsd.org/people/developers.html",
+   "found_by": [
+    "copyright"
+   ],
+   "primary_receipt": 0,
+   "receipts": [
+    {
+     "file": "libbsd0/copyright",
+     "line": 194,
+     "text": "Some code was contributed to The NetBSD Foundation by Allen Briggs.",
+     "package": "libbsd0",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    }
+   ],
+   "still": {
+    "probe": "rdepends",
+    "arg": "libbsd0",
+    "value": 5,
+    "sentence": "5 installed packages on this machine depend on libbsd0.",
+    "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libbsd0 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libbsd0 | wc -l",
+    "measured_at": "2026-10-27T18:51+05:30",
+    "error": null
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Q37632040",
+   "name": "Andrey Aleksandrovich Chernov",
+   "keys": [
+    "andrey aleksandrovich chernov",
+    "andrey chernov"
+   ],
+   "years": "1966–2017",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "The 1997 notice is newlib's setlocale.h, copied from FreeBSD, where the file's first commit is by Andrey A. Chernov (ache). Wikipedia: FreeBSD core team member, 1966-2017. The code is not built for this machine, so nothing is measured.",
+   "second_source": "https://en.wikipedia.org/wiki/Andrei_Chernov",
+   "found_by": [
+    "copyright"
+   ],
+   "primary_receipt": 0,
+   "receipts": [
+    {
+     "file": "cpp-14-x86-64-linux-gnu/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "cpp-14-x86-64-linux-gnu",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "cpp-14/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "cpp-14",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "gcc-14-base/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "gcc-14-base",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "gcc-14-x86-64-linux-gnu/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "gcc-14-x86-64-linux-gnu",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "gcc-14/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "gcc-14",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libasan8/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libasan8",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libatomic1/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libatomic1",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libcc1-0/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libcc1-0",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libgcc-14-dev/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libgcc-14-dev",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libgcc-s1/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libgcc-s1",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libgfortran5/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libgfortran5",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libgomp1/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libgomp1",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libhwasan0/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libhwasan0",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libitm1/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libitm1",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "liblsan0/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "liblsan0",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libquadmath0/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libquadmath0",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libstdc++6/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libstdc++6",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libtsan2/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libtsan2",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libubsan1/copyright",
+     "line": 1112,
+     "text": "Copyright (C) 1997 by Andrey A. Chernov, Moscow, Russia.",
+     "package": "libubsan1",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    }
+   ],
+   "still": {
+    "probe": "",
+    "arg": ""
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Q2876598",
+   "name": "Jörg Schilling",
+   "keys": [
+    "j schilling",
+    "jorg schilling"
+   ],
+   "years": "1955–2021",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "libcdio's iso9660 headers carry 'J. Schilling' (1999-2000) from mkisofs and cdrtools, which Wikipedia says he wrote and maintained. Wikipedia: died 2021.",
+   "second_source": "https://de.wikipedia.org/wiki/J%C3%B6rg_Schilling",
+   "found_by": [
+    "copyright"
+   ],
+   "primary_receipt": 2,
+   "receipts": [
+    {
+     "file": "libcdio-cdda2t64/copyright",
+     "line": 18,
+     "text": "1999, 2000 J. Schilling",
+     "package": "libcdio-cdda2t64",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libcdio-paranoia2t64/copyright",
+     "line": 18,
+     "text": "1999, 2000 J. Schilling",
+     "package": "libcdio-paranoia2t64",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libcdio19t64/copyright",
+     "line": 13,
+     "text": "1999-2000 J. Schilling",
+     "package": "libcdio19t64",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    }
+   ],
+   "still": {
+    "probe": "rdepends",
+    "arg": "libcdio19t64",
+    "value": 2,
+    "sentence": "2 installed packages on this machine depend on libcdio19t64.",
+    "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libcdio19t64 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libcdio19t64 | wc -l",
+    "measured_at": "2026-10-27T18:51+05:30",
+    "error": null
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Q93033",
+   "name": "John Walker",
+   "keys": [
+    "john walker"
+   ],
+   "years": "1949–2024",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "FFmpeg's '2000, John Walker' is the ciescope filter's notice, ported from Netpbm's ppmcie.c, which credits John Walker of fourmilab.ch; Wikidata gives fourmilab.ch as his site. Wikipedia: founder of Autodesk, 1949-2024.",
+   "second_source": "https://en.wikipedia.org/wiki/John_Walker_(programmer)",
+   "found_by": [
+    "copyright"
+   ],
+   "primary_receipt": 3,
+   "receipts": [
+    {
+     "file": "ffmpeg/copyright",
+     "line": 41,
+     "text": "2000, John Walker",
+     "package": "ffmpeg",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libavcodec61/copyright",
+     "line": 41,
+     "text": "2000, John Walker",
+     "package": "libavcodec61",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libavdevice61/copyright",
+     "line": 41,
+     "text": "2000, John Walker",
+     "package": "libavdevice61",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libavfilter10/copyright",
+     "line": 41,
+     "text": "2000, John Walker",
+     "package": "libavfilter10",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libavformat61/copyright",
+     "line": 41,
+     "text": "2000, John Walker",
+     "package": "libavformat61",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libavutil59/copyright",
+     "line": 41,
+     "text": "2000, John Walker",
+     "package": "libavutil59",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libpostproc58/copyright",
+     "line": 41,
+     "text": "2000, John Walker",
+     "package": "libpostproc58",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libswresample5/copyright",
+     "line": 41,
+     "text": "2000, John Walker",
+     "package": "libswresample5",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libswscale8/copyright",
+     "line": 41,
+     "text": "2000, John Walker",
+     "package": "libswscale8",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    }
+   ],
+   "still": {
+    "probe": "rdepends",
+    "arg": "libavfilter10",
+    "value": 3,
+    "sentence": "3 installed packages on this machine depend on libavfilter10.",
+    "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libavfilter10 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libavfilter10 | wc -l",
+    "measured_at": "2026-10-27T18:51+05:30",
+    "error": null
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Q2167581",
+   "name": "Ross J. Anderson",
+   "keys": [
+    "ross anderson"
+   ],
+   "years": "1956–2024",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "Nettle's Serpent files credit the cipher's three designers, Ross Anderson first. Wikipedia: co-designer of Serpent, 1956-2024.",
+   "second_source": "https://en.wikipedia.org/wiki/Ross_J._Anderson",
+   "found_by": [
+    "copyright"
+   ],
+   "primary_receipt": 1,
+   "receipts": [
+    {
+     "file": "libhogweed6t64/copyright",
+     "line": 560,
+     "text": "Copyright: 1998 Ross Anderson, <name removed>, <name removed>",
+     "package": "libhogweed6t64",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 2
+    },
+    {
+     "file": "libnettle8t64/copyright",
+     "line": 560,
+     "text": "Copyright: 1998 Ross Anderson, <name removed>, <name removed>",
+     "package": "libnettle8t64",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 2
+    }
+   ],
+   "still": {
+    "probe": "rdepends",
+    "arg": "libnettle8t64",
+    "value": 8,
+    "sentence": "8 installed packages on this machine depend on libnettle8t64.",
+    "command": "apt-cache rdepends --installed --no-suggests --no-recommends --no-conflicts --no-breaks --no-replaces --no-enhances libnettle8t64 | tail -n +3 | tr -d ' |' | sort -u | grep -vx libnettle8t64 | wc -l",
+    "measured_at": "2026-10-27T18:51+05:30",
+    "error": null
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Qwithdrawn",
+   "name": "[withdrawn]",
+   "keys": [
+    "fredrick brennan"
+   ],
+   "years": "1994–2026",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "[withdrawn]'s test font is credited to [withdrawn] (2020) and came from his GitHub account, which Wikidata lists. His death in 2026 is reported by Wikipedia and Le Monde. The font is in [withdrawn]'s source, not installed here, so nothing is measured.",
+   "second_source": "https://en.wikipedia.org/wiki/withdrawn",
+   "found_by": [
+    "copyright"
+   ],
+   "primary_receipt": 2,
+   "receipts": [
+    {
+     "file": "libharfbuzz-icu0/copyright",
+     "line": 128,
+     "text": "Copyright: 2020, [withdrawn]",
+     "package": "libharfbuzz-icu0",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libharfbuzz-subset0/copyright",
+     "line": 128,
+     "text": "Copyright: 2020, [withdrawn]",
+     "package": "libharfbuzz-subset0",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libharfbuzz0b/copyright",
+     "line": 128,
+     "text": "Copyright: 2020, [withdrawn]",
+     "package": "libharfbuzz0b",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    }
+   ],
+   "still": {
+    "probe": "",
+    "arg": ""
+   },
+   "snapshot": "2026-10-27"
+  },
+  {
+   "qid": "Q133867446",
+   "name": "Thomas Lord",
+   "keys": [
+    "thomas lord",
+    "tom lord"
+   ],
+   "years": "1966–2022",
+   "years_note": null,
+   "reviewer": "Anand Biju",
+   "date": "2026-10-27",
+   "reason": "diffutils' ChangeLog-2008 has Tom Lord introducing sdiff on 16 Sep 1991 from an FSF machine; glibc's 1995 regex test suite is his. LWN's July 2022 notice and Wikidata (FSF and Carnegie Mellon) describe the same person. diffutils is Essential, so no package declares a dependency on it: nothing is measured.",
+   "second_source": "https://lwn.net/Articles/901807/",
+   "found_by": [
+    "byline",
+    "copyright",
+    "gemma"
+   ],
+   "primary_receipt": 0,
+   "receipts": [
+    {
+     "file": "diffutils/copyright",
+     "line": 9,
+     "text": "GNU `sdiff' was written by Thomas Lord. GNU `cmp' was written by",
+     "package": "diffutils",
+     "source": "doc",
+     "methods": [
+      "byline",
+      "gemma"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libc-bin/copyright",
+     "line": 209,
+     "text": "Copyright: 1995 by Tom Lord",
+     "package": "libc-bin",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libc-dev-bin/copyright",
+     "line": 209,
+     "text": "Copyright: 1995 by Tom Lord",
+     "package": "libc-dev-bin",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libc6-dev/copyright",
+     "line": 209,
+     "text": "Copyright: 1995 by Tom Lord",
+     "package": "libc6-dev",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    },
+    {
+     "file": "libc6/copyright",
+     "line": 209,
+     "text": "Copyright: 1995 by Tom Lord",
+     "package": "libc6",
+     "source": "doc",
+     "methods": [
+      "copyright"
+     ],
+     "others": 0
+    }
+   ],
+   "still": {
+    "probe": "",
+    "arg": ""
+   },
+   "snapshot": "2026-10-27"
+  }
+ ]
+}
