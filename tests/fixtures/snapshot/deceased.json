@@ -1,0 +1,714 @@
+{
+ "meta": {
+  "source": "Wikidata, https://www.wikidata.org",
+  "license": "CC0 1.0 (Wikidata structured data)",
+  "endpoint": "https://query.wikidata.org/sparql",
+  "user_agent": "names-in-the-machine/0.1 (https://github.com/Anandb71/names-in-the-machine; one-time CC0 snapshot of deceased software people for an offline tool)",
+  "retrieved_started": "2026-10-27T17:31:07+05:30",
+  "retrieved_finished": "2026-10-27T17:50:19+05:30",
+  "occupation_roots": {
+   "Q5482740": "programmer",
+   "Q82594": "computer scientist",
+   "Q1709010": "software engineer",
+   "Q183888": "software developer"
+  },
+  "occupations": {
+   "Q100247281": "media informatics specialist",
+   "Q100600701": "GNU MDK maintainer",
+   "Q100603411": "VC-dwim maintainer",
+   "Q100699169": "video game campaign designer",
+   "Q102047407": "computational neuroscientist",
+   "Q102123214": "GCompris maintainer",
+   "Q104214726": "GLPK maintainer",
+   "Q104439661": "GNU Parallel maintainer",
+   "Q10498413": "Q10498413",
+   "Q105106267": "GNU Autoconf maintainer",
+   "Q105222317": "GNU tar maintainer",
+   "Q105483271": "GNU Artanis maintainer",
+   "Q105684334": "open-source developer",
+   "Q105690904": "GNU poke maintainer",
+   "Q106104705": "mobile app developer",
+   "Q106268090": "research software engineer",
+   "Q106432098": "digital archivist",
+   "Q106833292": "GNU Chess maintainer",
+   "Q107405281": "GNU complexity maintainer",
+   "Q107441371": "Gnu-pw-mgr maintainer",
+   "Q107619185": "digital humanist",
+   "Q107636670": "modder",
+   "Q107636687": "mapper",
+   "Q107753510": "Diffutils maintainer",
+   "Q1078262": "database administrator",
+   "Q107941968": "GNU mcron maintainer",
+   "Q108040159": "Geiser maintainer",
+   "Q108053568": "GNU Prolog maintainer",
+   "Q108877388": "hacktivist",
+   "Q109044323": "computer technician",
+   "Q109231095": "ERC maintainer",
+   "Q109233712": "IceCat maintainer",
+   "Q109233763": "GNUzilla maintainer",
+   "Q109478766": "Guile-CV maintainer",
+   "Q109504628": "OpenBSD developer",
+   "Q109517948": "Libtasn1 maintainer",
+   "Q109923414": "LibreJS maintainer",
+   "Q110168833": "Serveez maintainer",
+   "Q110217691": "emacs-gnugo maintainer",
+   "Q110223020": "Guile-SDL maintainer",
+   "Q110245834": "back-end developer",
+   "Q110313913": "Direvent maintainer",
+   "Q110316238": "GNU cflow maintainer",
+   "Q110371637": "Alive program maintainer",
+   "Q110412946": "GNU Rush maintainer",
+   "Q110420289": "GNU libunistring maintainer",
+   "Q110431172": "GSRC maintainer",
+   "Q110439685": "GNUbiff maintainer",
+   "Q110458823": "GNU Time maintainer",
+   "Q110485826": "Mtools maintainer",
+   "Q110532602": "Zile maintainer",
+   "Q110532639": "GNU Hello program maintainer",
+   "Q110536516": "GNU Goodbye program maintainer",
+   "Q110648024": "Ocrad maintainer",
+   "Q110687519": "Ddrescue maintainer",
+   "Q110713417": "GNU Classpath maintainer",
+   "Q110713445": "Gcjwebplugin maintainer",
+   "Q110736571": "Wget maintainer",
+   "Q110740072": "EaseJS maintainer",
+   "Q110768508": "Libcdio maintainer",
+   "Q110769607": "GNU sed maintainer",
+   "Q110781161": "help2man maintainer",
+   "Q110782514": "GNU Screen maintainer",
+   "Q110782826": "penetration tester",
+   "Q110794631": "GNU libsigsegv maintainer",
+   "Q110795253": "Q110795253",
+   "Q110808295": "GNU RCS maintainer",
+   "Q110878230": "Swbis maintainer",
+   "Q110997204": "Russian hackers",
+   "Q111049099": "GNU libavl maintainer",
+   "Q111142297": "Unifont maintainer",
+   "Q111525265": "gzip maintainer",
+   "Q111698949": "GNU Queue maintainer",
+   "Q111722935": "Recutils maintainer",
+   "Q112229133": "GNU Nettle maintainer",
+   "Q112595064": "GNU libiconv maintainer",
+   "Q112673282": "Ccide maintainer",
+   "Q112742035": "GnuCash maintainer",
+   "Q112948493": "GNU Freetalk maintainer",
+   "Q112998581": "Gforth maintainer",
+   "Q113010742": "J.T.W. maintainer",
+   "Q113027516": "ada-mode maintainer",
+   "Q113173079": "Cim maintainer",
+   "Q113225872": "Dap maintainer",
+   "Q1132716": "grey hat",
+   "Q113279896": "GNU epsilon maintainer",
+   "Q113279943": "GNU Jitter maintainer",
+   "Q113303889": "GNU/EDMA maintainer",
+   "Q113333184": "garpd maintainer",
+   "Q113336251": "GNU FreeIPMI maintainer",
+   "Q113406490": "GNU Octave maintainer",
+   "Q113463526": "GNU Shishi maintainer",
+   "Q113482222": "GNU UnRTF maintainer",
+   "Q113502182": "GNOWSYS maintainer",
+   "Q113513808": "GNU Pipo maintainer",
+   "Q113562094": "GNUspool maintainer",
+   "Q113562097": "GNUbatch maintainer",
+   "Q113995918": "GNUsound maintainer",
+   "Q114002577": "GNUMP3d maintainer",
+   "Q114059772": "GNATS maintainer",
+   "Q114060325": "Gnatsweb maintainer",
+   "Q114073283": "modus-themes maintainer",
+   "Q114073355": "notmuch-indicator maintainer",
+   "Q114296455": "GNUe maintainer",
+   "Q114296528": "GNUe DCL maintainer",
+   "Q114332344": "emacs-sokoban maintainer",
+   "Q114366456": "rcirc-color maintainer",
+   "Q114407394": "Emacs/W3 maintainer",
+   "Q114407850": "Emacs/URL maintainer",
+   "Q114425708": "Hcel maintainer",
+   "Q114441256": "MPFR maintainer",
+   "Q114456411": "TRAMP maintainer",
+   "Q114501561": "GNU date maintainer",
+   "Q114501816": "Coreutils maintainer",
+   "Q114567516": "emacs-debbugs maintainer",
+   "Q114567719": "emacs-soap-client maintainer",
+   "Q114569135": "EMMS maintainer",
+   "Q114814353": "cyber soldier",
+   "Q114832831": "modding group",
+   "Q114862739": "Inetutils maintainer",
+   "Q115040670": "Hydra maintainer",
+   "Q115040745": "Lv maintainer",
+   "Q115097376": "GNU gettext maintainer",
+   "Q115099598": "Rustacean",
+   "Q115099650": "Pythonista",
+   "Q115101592": "Talkfilters maintainer",
+   "Q115110419": "GNU oSIP maintainer",
+   "Q115232402": "MARST maintainer",
+   "Q115453441": "Luwak maintainer",
+   "Q115539225": "GNU indent maintainer",
+   "Q115641904": "database developer",
+   "Q115729879": "GNU MPC maintainer",
+   "Q115943439": "GNUmed maintainer",
+   "Q115957410": "emacs-rec-mode maintainer",
+   "Q116009763": "GNU G-Golf maintainer",
+   "Q116026535": "MathMoon maintainer",
+   "Q116047704": "emacs-embark maintainer",
+   "Q116057796": "GNUN maintainer",
+   "Q116127037": "GNU AutoGen maintainer",
+   "Q116433217": "GNU kopi maintainer",
+   "Q116686829": "ToutDoux maintainer",
+   "Q116698150": "GNU Xnee maintainer",
+   "Q116952787": "natural language processing engineer",
+   "Q116952811": "computer vision engineer",
+   "Q116979620": "Digital Archives Specialist",
+   "Q116995822": "GNU Autoconf Archive maintainer",
+   "Q117006413": "GNU abcsh maintainer",
+   "Q117019723": "GNU a2ps maintainer",
+   "Q117025241": "GNU JEL maintainer",
+   "Q117048903": "GNU HaliFAX maintainer",
+   "Q117087238": "Bioinformatics engineer",
+   "Q117307814": "Texinfo maintainer",
+   "Q117316163": "OrgaDoc maintainer",
+   "Q117883473": "emacs-marginalia maintainer",
+   "Q120085080": "DDD maintainer",
+   "Q120801189": "homebrew developer",
+   "Q121080253": "sed-mode maintainer",
+   "Q121087398": "DrGeo maintainer",
+   "Q121092669": "Groff maintainer",
+   "Q121141493": "GNU Leg maintainer",
+   "Q122192473": "GIS developer",
+   "Q122931157": "emacs-denote maintainer",
+   "Q122931285": "emacs-denote-menu maintainer",
+   "Q122945323": "GTKeyboard maintainer",
+   "Q122946142": "GNU webmaster",
+   "Q123270910": "GNU gprofng-gui maintainer",
+   "Q123574267": "AI ethicist",
+   "Q123577383": "Civic hacker",
+   "Q124401954": "jami-bot maintainer",
+   "Q124476389": "Initial access broker",
+   "Q124726356": "indie game developer",
+   "Q124729117": "GDB maintainer",
+   "Q125199471": "MPDired maintainer",
+   "Q125301482": "geographic information specialist",
+   "Q125470419": "GNU Stow maintainer",
+   "Q125939482": "emacs-org-remark maintainer",
+   "Q125940759": "Omn-mode maintainer",
+   "Q125984705": "Libdbh maintainer",
+   "Q126116209": "artificial intelligence engineer",
+   "Q126208339": "GNU Source Installer maintainer",
+   "Q126285582": "GNU findutils maintainer",
+   "Q126490755": "emacs-gited maintainer",
+   "Q126617203": "FreeDink maintainer",
+   "Q126617621": "Planet GNU maintainer",
+   "Q126691055": "gtags-mode maintainer",
+   "Q126740523": "kiwix.el maintainer",
+   "Q126940210": "Notes-Mode maintainer",
+   "Q127027192": "org-translate maintainer",
+   "Q127069288": "emacs-persist maintainer",
+   "Q130265441": "GLeem maintainer",
+   "Q130307818": "GIMP maintainer",
+   "Q130459690": "emacs-slime-volleyball maintainer",
+   "Q131402160": "emacs-sly maintainer",
+   "Q131421813": "emacs-treeview maintainer",
+   "Q131516129": "IDLWAVE maintainer",
+   "Q131746526": "Magit maintainer",
+   "Q132818381": "GNU micron maintainer",
+   "Q1332289": "black hat",
+   "Q133451950": "Gopher",
+   "Q133505414": "software evaluator",
+   "Q133505482": "GNU software evaluator",
+   "Q133835986": "gperf maintainer",
+   "Q133883706": "Information technology specialist – application development",
+   "Q133883710": "Information technology specialist – Digital networking",
+   "Q133883714": "Information technology specialist – System integration",
+   "Q133883718": "Information technology specialist – Data and process analysis",
+   "Q133890718": "Electric VLSI Design System maintainer",
+   "Q133964539": "matlab-mode maintainer",
+   "Q134311243": "software-development consultant",
+   "Q134322048": "AROUNDMe maintainer",
+   "Q134430388": "GNU m4 maintainer",
+   "Q134545939": "Director of Data",
+   "Q134545946": "Head of Data Engineering & Data Platform",
+   "Q134545988": "Fraud Data & Machine Learning Services Manager",
+   "Q134545993": "Senior Analytics Executive",
+   "Q134706639": "Qexo maintainer",
+   "Q135984125": "GNU/Taylor UUCP maintainer",
+   "Q136345927": "GNU gcal maintainer",
+   "Q136557230": "FreedomBox Authors",
+   "Q137513715": "NetBSD developer",
+   "Q137926762": "gnome-commander maintainer",
+   "Q138060189": "GNUtrition maintainer",
+   "Q138060301": "GNU Linux-libre maintainer",
+   "Q138457582": "solo game developer",
+   "Q1391300": "computer science expert",
+   "Q139382873": "co-maintainer",
+   "Q139567021": "software synthesizer developer",
+   "Q139567825": "Cursynth maintainer",
+   "Q139602798": "GNU Macchanger maintainer",
+   "Q139665979": "GRUB maintainer",
+   "Q139759619": "VCDImager maintainer",
+   "Q141838709": "Q141838709",
+   "Q1420140": "software maintainer",
+   "Q1487": "hacker",
+   "Q15709480": "computational biologist",
+   "Q15976092": "artificial intelligence researcher",
+   "Q15976270": "computational linguist",
+   "Q1709010": "software engineer",
+   "Q183888": "software developer",
+   "Q18922761": "white hat",
+   "Q1908349": "mathematical-technical software developer",
+   "Q19725716": "computational physicist",
+   "Q20013489": "digital librarian",
+   "Q2324286": "Q2324286",
+   "Q23515215": "machine learning engineer",
+   "Q24963057": "site reliability engineer",
+   "Q2798820": "security hacker",
+   "Q2904006": "bioinformatician",
+   "Q3045482": "Q3045482",
+   "Q3045484": "software developer",
+   "Q3150825": "administrative informatics specialist",
+   "Q32554": "cracker",
+   "Q3407069": "Synthesizer programmer",
+   "Q3476620": "video game writer",
+   "Q3781101": "Imagineer",
+   "Q4105860": "lead programmer",
+   "Q41674": "webmaster",
+   "Q4948392": "bot herder",
+   "Q51034797": "expert in archaeoinformatics",
+   "Q5157338": "computational scientist",
+   "Q53471584": "software tester",
+   "Q54568999": "front-end developer",
+   "Q5482740": "programmer",
+   "Q55168529": "principal software engineer",
+   "Q55168745": "senior principal software engineer",
+   "Q5637247": "hacker",
+   "Q57060968": "Industrial IT specialist",
+   "Q57999368": "music programmer",
+   "Q58287519": "video game developer",
+   "Q60462085": "systems librarian",
+   "Q613431": "application programmer",
+   "Q63538345": "video game director",
+   "Q66310338": "biodiversity informatician",
+   "Q66606128": "competitive programmer",
+   "Q66816558": "computational chemist",
+   "Q6859454": "web developer",
+   "Q70250066": "GNU maintainer",
+   "Q70251753": "Guix maintainer",
+   "Q70253277": "Guile maintainer",
+   "Q70631379": "business informatician",
+   "Q71050729": "geoinformatician",
+   "Q71142988": "Aspell maintainer",
+   "Q71302487": "GNUnet maintainer",
+   "Q71307253": "Libmicrohttpd maintainer",
+   "Q71458492": "Gnuastro maintainer",
+   "Q72980512": "Emacs maintainer",
+   "Q72980965": "AUCTeX maintainer",
+   "Q73081785": "GCC maintainer",
+   "Q73082256": "Binutils maintainer",
+   "Q74716319": "Cpio maintainer",
+   "Q75032822": "Mailutils maintainer",
+   "Q81715850": "TeXmacs maintainer",
+   "Q81747501": "Bison maintainer",
+   "Q81751790": "Gretl maintainer",
+   "Q81948845": "GNU GLOBAL maintainer",
+   "Q82096009": "grep maintainer",
+   "Q82556584": "GNU SASL maintainer",
+   "Q82594": "computer scientist",
+   "Q831920": "business IT specialist",
+   "Q84318954": "game theorist",
+   "Q84324516": "modding website",
+   "Q85318459": "Ncurses maintainer",
+   "Q85565507": "narrative director",
+   "Q85829821": "WB maintainer",
+   "Q85833307": "SCM maintainer",
+   "Q85843659": "JACAL maintainer",
+   "Q85844913": "SLIB maintainer",
+   "Q863368": "game programmer",
+   "Q86597253": "GNU Health maintainer",
+   "Q869052": "script kiddie",
+   "Q86933056": "Datamash maintainer",
+   "Q87057677": "LibreDWG maintainer",
+   "Q87068742": "Parted maintainer",
+   "Q91471575": "GNU Radio maintainer",
+   "Q91546356": "multimedia developer",
+   "Q96051958": "MCSim maintainer",
+   "Q96072517": "full stack developer",
+   "Q96095953": "Gawk maintainer",
+   "Q96400015": "GNU adns maintainer",
+   "Q96405475": "GNU readline maintainer",
+   "Q96405599": "GNU Bash maintainer",
+   "Q96776680": "GNU Gama maintainer",
+   "Q97461165": "GnuPG maintainer",
+   "Q97950380": "Midnight Commander maintainer",
+   "Q98088144": "Nano maintainer",
+   "Q98456061": "PSPP maintainer",
+   "Q98521640": "Automake maintainer",
+   "Q98908485": "GNU Dico maintainer",
+   "Q99013374": "Org-mode maintainer",
+   "Q99543539": "MIT/GNU Scheme maintainer"
+  },
+  "link_properties": {
+   "P178": "developer",
+   "P170": "creator",
+   "P50": "author",
+   "P943": "programmer",
+   "P287": "designed by",
+   "P112": "founded by",
+   "P61": "discoverer or inventor"
+  },
+  "link_properties_per_person_only": [
+   "P112",
+   "P61"
+  ],
+  "counts": {
+   "occupations": 330,
+   "deceased_by_occupation": 2923,
+   "deceased_by_software_link": 333,
+   "people": 3110,
+   "people_human": 3104,
+   "no_death_date_by_occupation": 48121,
+   "no_death_date_people": 51889,
+   "no_death_date_name_hashes": 60416,
+   "queries": 288,
+   "rows_fetched": 190914,
+   "failed_attempts": 5
+  },
+  "incomplete": [],
+  "queries": {
+   "occupations": "SELECT DISTINCT ?occ ?occLabel WHERE {\n  VALUES ?root { %(roots)s }\n  ?occ wdt:P279* ?root .\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en\". }\n}",
+   "deceased_by_occupation": "SELECT DISTINCT ?p WHERE {\n  VALUES ?occ { %(occs)s }\n  ?p wdt:P106 ?occ ; wdt:P570 ?died .\n}",
+   "deceased_by_link": "SELECT DISTINCT ?p ?sw WHERE {\n  ?sw wdt:%(prop)s ?p .\n  ?p wdt:P31 wd:Q5 ; wdt:P570 ?died .\n  ?sw wdt:P31/wdt:P279* wd:Q7397 .\n}",
+   "no_death_by_occupation": "SELECT DISTINCT ?p WHERE {\n  VALUES ?occ { %(occs)s }\n  ?p wdt:P106 ?occ ; wdt:P31 wd:Q5 .\n  FILTER NOT EXISTS { ?p wdt:P570 ?died }\n}",
+   "no_death_by_link": "SELECT DISTINCT ?p WHERE {\n  ?sw wdt:%(prop)s ?p .\n  ?p wdt:P31 wd:Q5 .\n  FILTER NOT EXISTS { ?p wdt:P570 ?died }\n  ?sw wdt:P31/wdt:P279* wd:Q7397 .\n}",
+   "names": "SELECT ?p ?kind ?name WHERE {\n  VALUES ?p { %(qids)s }\n  VALUES ?kind { rdfs:label skos:altLabel }\n  ?p ?kind ?name .\n  FILTER(LANG(?name) IN (\"en\", \"mul\"))\n}",
+   "facts": "SELECT ?p ?prop ?value ?valueLabel WHERE {\n  VALUES ?p { %(qids)s }\n  VALUES ?prop { wdt:P31 wdt:P106 }\n  ?p ?prop ?value .\n  OPTIONAL { ?value rdfs:label ?valueLabel . FILTER(LANG(?valueLabel) = \"en\") }\n}",
+   "dates": "SELECT ?p ?which ?time ?precision ?rank WHERE {\n  VALUES ?p { %(qids)s }\n  VALUES (?which ?claim ?valueProp) { (\"born\" p:P569 psv:P569) (\"died\" p:P570 psv:P570) }\n  ?p ?claim ?statement .\n  ?statement wikibase:rank ?rank .\n  OPTIONAL { ?statement ?valueProp ?node . ?node wikibase:timeValue ?time ; wikibase:timePrecision ?precision . }\n}",
+   "links_in": "SELECT ?p ?prop ?sw WHERE {\n  VALUES ?p { %(qids)s }\n  VALUES ?prop { wdt:P178 wdt:P170 wdt:P943 wdt:P287 wdt:P112 wdt:P61 }\n  ?sw ?prop ?p .\n}",
+   "links_out": "SELECT ?p ?sw WHERE {\n  VALUES ?p { %(qids)s }\n  ?p wdt:P800 ?sw .\n}",
+   "link_labels": "SELECT ?sw ?swLabel WHERE {\n  VALUES ?sw { %(qids)s }\n  ?sw rdfs:label ?swLabel . FILTER(LANG(?swLabel) = \"en\")\n}"
+  },
+  "how_the_queries_were_run": "%(roots)s, %(occs)s and %(qids)s are VALUES lists: the occupation roots, the occupation closure in chunks of 60, and person QIDs in batches (150 for names/facts/dates/links out, 100 for links in, 300 for link labels, 400 for no-death-date names). %(prop)s is each link property except those in link_properties_per_person_only. Failing batches were split in half; a failing single occupation was paged with ORDER BY ?p LIMIT/OFFSET.",
+  "not_requested": "cause of death (P509), manner of death (P1196), place of death (P20) and every other property not listed in these queries",
+  "fixture": "cut from data/deceased.json by tests/fixtures/make_snapshot.py; Rory Smythe added as a homonym"
+ },
+ "people": [
+  {
+   "qid": "Q92761",
+   "label": "Ian Murdock",
+   "aliases": [
+    "Ian Ashley Murdock"
+   ],
+   "human": true,
+   "born": [
+    {
+     "time": "1973-04-28",
+     "precision": 11,
+     "rank": "normal"
+    }
+   ],
+   "died": [
+    {
+     "time": "2015-12-28",
+     "precision": 11,
+     "rank": "preferred"
+    }
+   ],
+   "occupations": [
+    {
+     "qid": "Q5482740",
+     "label": "programmer"
+    },
+    {
+     "qid": "Q81096",
+     "label": "engineer"
+    },
+    {
+     "qid": "Q82594",
+     "label": "computer scientist"
+    }
+   ],
+   "software": [
+    {
+     "qid": "Q55966784",
+     "label": "The Debian Project",
+     "via": "P112"
+    },
+    {
+     "qid": "Q305892",
+     "label": "dpkg",
+     "via": "P178"
+    },
+    {
+     "qid": "Q3176995",
+     "label": "Debian Manifesto",
+     "via": "P800"
+    }
+   ]
+  },
+  {
+   "qid": "Q550635",
+   "label": "Phil Katz",
+   "aliases": [
+    "PK",
+    "Phillip W. Katz",
+    "Phillip Walter Katz"
+   ],
+   "human": true,
+   "born": [
+    {
+     "time": "1962-11-03",
+     "precision": 11,
+     "rank": "normal"
+    }
+   ],
+   "died": [
+    {
+     "time": "2000-04-14",
+     "precision": 11,
+     "rank": "normal"
+    }
+   ],
+   "occupations": [
+    {
+     "qid": "Q5482740",
+     "label": "programmer"
+    },
+    {
+     "qid": "Q82594",
+     "label": "computer scientist"
+    }
+   ],
+   "software": [
+    {
+     "qid": "Q3330119",
+     "label": "PKWARE",
+     "via": "P112"
+    },
+    {
+     "qid": "Q136218",
+     "label": "ZIP",
+     "via": "P178"
+    },
+    {
+     "qid": "Q1602149",
+     "label": "PKZIP",
+     "via": "P178"
+    },
+    {
+     "qid": "Q2712",
+     "label": "DEFLATE",
+     "via": "P178"
+    },
+    {
+     "qid": "Q1602149",
+     "label": "PKZIP",
+     "via": "P800"
+    }
+   ]
+  },
+  {
+   "qid": "Q110051708",
+   "label": "Fredrik Lundh",
+   "aliases": [
+    "Effbot"
+   ],
+   "human": true,
+   "born": [
+    {
+     "time": "2000-01-01",
+     "precision": 7,
+     "rank": "normal"
+    }
+   ],
+   "died": [
+    {
+     "time": "2021-11-01",
+     "precision": 10,
+     "rank": "normal"
+    }
+   ],
+   "occupations": [
+    {
+     "qid": "Q105684334",
+     "label": "open-source developer"
+    },
+    {
+     "qid": "Q8246794",
+     "label": "blogger"
+    }
+   ],
+   "software": [
+    {
+     "qid": "Q2985103",
+     "label": "Python Imaging Library",
+     "via": "P800"
+    }
+   ]
+  },
+  {
+   "qid": "Q302817",
+   "label": "Aaron Swartz",
+   "aliases": [
+    "Aaron H. Swartz",
+    "Aaron Hillel George Swartz",
+    "Aaron Hillel Swartz",
+    "AaronSw"
+   ],
+   "human": true,
+   "born": [
+    {
+     "time": "1986-11-08",
+     "precision": 11,
+     "rank": "normal"
+    }
+   ],
+   "died": [
+    {
+     "time": "2013-01-11",
+     "precision": 11,
+     "rank": "normal"
+    }
+   ],
+   "occupations": [
+    {
+     "qid": "Q108877388",
+     "label": "hacktivist"
+    },
+    {
+     "qid": "Q11499147",
+     "label": "political activist"
+    },
+    {
+     "qid": "Q36180",
+     "label": "writer"
+    },
+    {
+     "qid": "Q41546637",
+     "label": "Wikimedian"
+    },
+    {
+     "qid": "Q43845",
+     "label": "businessperson"
+    },
+    {
+     "qid": "Q5482740",
+     "label": "programmer"
+    }
+   ],
+   "software": [
+    {
+     "qid": "Q111759432",
+     "label": "Reddit Inc.",
+     "via": "P112"
+    },
+    {
+     "qid": "Q1136",
+     "label": "Reddit",
+     "via": "P112"
+    },
+    {
+     "qid": "Q1201876",
+     "label": "Open Library",
+     "via": "P112"
+    },
+    {
+     "qid": "Q15735491",
+     "label": "Tor2web",
+     "via": "P170"
+    },
+    {
+     "qid": "Q1193600",
+     "label": "Markdown",
+     "via": "P178"
+    },
+    {
+     "qid": "Q15465348",
+     "label": "SecureDrop",
+     "via": "P178"
+    },
+    {
+     "qid": "Q15735491",
+     "label": "Tor2web",
+     "via": "P178"
+    },
+    {
+     "qid": "Q1136",
+     "label": "Reddit",
+     "via": "P800"
+    },
+    {
+     "qid": "Q1193600",
+     "label": "Markdown",
+     "via": "P800"
+    },
+    {
+     "qid": "Q1201876",
+     "label": "Open Library",
+     "via": "P800"
+    },
+    {
+     "qid": "Q45432",
+     "label": "RSS",
+     "via": "P800"
+    }
+   ]
+  },
+  {
+   "qid": "Q133867446",
+   "label": "Thomas Lord",
+   "aliases": [
+    "Tom Lord"
+   ],
+   "human": true,
+   "born": [
+    {
+     "time": "1966-04-26",
+     "precision": 11,
+     "rank": "normal"
+    }
+   ],
+   "died": [
+    {
+     "time": "2022-06-01",
+     "precision": 10,
+     "rank": "normal"
+    }
+   ],
+   "occupations": [
+    {
+     "qid": "Q5482740",
+     "label": "programmer"
+    }
+   ],
+   "software": []
+  },
+  {
+   "qid": "Q990000001",
+   "label": "Rory Smythe",
+   "aliases": [],
+   "human": true,
+   "born": [
+    {
+     "time": "1948-12-12",
+     "precision": 11,
+     "rank": "normal"
+    }
+   ],
+   "died": [
+    {
+     "time": "2009-06-04",
+     "precision": 11,
+     "rank": "normal"
+    }
+   ],
+   "occupations": [
+    {
+     "qid": "Q3665646",
+     "label": "basketball player"
+    },
+    {
+     "qid": "Q5137571",
+     "label": "basketball coach"
+    }
+   ],
+   "software": []
+  }
+ ]
+}

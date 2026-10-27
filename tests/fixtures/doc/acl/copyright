@@ -1,0 +1,9 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+
+Files:
+ *
+Copyright:
+ Copyright © 2000-2008 Silicon Graphics, Inc.
+ Copyright © 1999-2001,2007-2009 Anders Grunewald
+License: GPL-2+
+ This program is free software: you can redistribute it and/or modify it

@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: html2text
+Version: 2025.4.15
+Summary: Turn HTML into equivalent Markdown-structured text.
+Author-email: Aaron Swartz <me@aaronsw.com>
+Maintainer-email: Jane Placeholder <jane@example.org>
+
+long description

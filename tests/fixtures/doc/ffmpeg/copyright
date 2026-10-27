@@ -1,0 +1,12 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+
+Files:
+  libavcodec/jfdctfst.c
+  libavcodec/jfdctint_template.c
+  libavcodec/jrevdct.c
+Copyright: 1991-1996, Thomas G. Vane
+License: IJG
+ The authors make NO WARRANTY or representation, either express or implied,
+ with respect to this software, its quality, accuracy, merchantability, or
+ fitness for a particular purpose.  This software is provided "AS IS", and
+ you, its user, assume the entire risk as to its quality and accuracy.

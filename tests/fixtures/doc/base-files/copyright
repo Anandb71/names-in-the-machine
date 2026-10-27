@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Comment:
+ This is the Debian prepackaged version of the Debian Base System
+ Miscellaneous files. These files were written by Ian Murdock
+ <imurdock@debian.org> and Bruno Pelham <bpelham@example.org>.
+ .
+ This package was first put together by Bruno Pelham <bpelham@example.org>,
+ from his own sources.

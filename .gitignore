@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+/build/
+/dist/
+
+# Local working files. These name living people and quote raw lines with emails,
+# so they never leave the machine.
+out/
+cache/
+eval/
+review.local.json
+/ofrenda.html
+
+# Secrets
+.env
+*.token

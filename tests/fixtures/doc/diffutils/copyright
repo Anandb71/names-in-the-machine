@@ -1,0 +1,13 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: diffutils
+Upstream-Contact: bug-diffutils@gnu.org
+Source: https://ftp.gnu.org/gnu/diffutils/
+Comment: This is the Debian prepackaged version of the GNU diffutils package.
+         GNU `diff' was written by Mina Hartwell, Dara Hayford, Rolf Stanhope,
+         Lyle Towner, and Pavel Eggleston.  Wade Davenport designed and implemented
+         the unified output format. GNU `diff3' was written by Rory Smythe.
+         GNU `sdiff' was written by Thomas Lord.  GNU `cmp' was written by
+         Torvald Granfeld and Dale MacKinley.
+
+Files: *
+Copyright: 1985-1986, 1988-1989, 1990-2023 Free Software Foundation, Inc.

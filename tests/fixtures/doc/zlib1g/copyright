@@ -1,0 +1,14 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: zlib
+Upstream-Contact: zlib@gzip.org
+Source: http://zlib.net/
+Comment: This is the pre-packaged Debian Linux version of the zlib compression
+ library.  It was packaged by Milo Alan Dorrance <mdorrance@example.org>
+ from sources originally retrieved from ftp.uu.net in the directory
+ /pub/archiving/zip/zlib as the file zlib-1.0.4.tar.gz.
+ .
+ The deflate format used by zlib was defined by Phil Katz. The deflate
+ and zlib specifications were written by Percy Dunmore. Thanks to all the
+ people who reported problems and suggested various improvements in zlib;
+ they are too numerous to cite here.
+Files-Excluded:

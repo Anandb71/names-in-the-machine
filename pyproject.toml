@@ -1,0 +1,25 @@
+[project]
+name = "names-in-the-machine"
+version = "0.1.0"
+description = "Find the people who have died whose names still ship in your computer's license files."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Anand Biju" }]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+nitm = "nitm.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["nitm"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
