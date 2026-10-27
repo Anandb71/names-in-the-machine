@@ -1,0 +1,29 @@
+occupation closure: 330 occupations
+deceased with a CS/software occupation: 2923
+deceased linked to a software item: 265 (total now 3053)
+Traceback (most recent call last):
+  File "/tmp/nitm-scratch/fetch.py", line 6, in <module>
+    meta = snapshot.fetch(Path("/workspace/hacktoberfest/week4/build/data"), progress=lambda m: print(m, flush=True))
+  File "/workspace/hacktoberfest/week4/build/nitm/snapshot.py", line 227, in fetch
+    for r in client.query(Q_LINKS % {"qids": _values(batch)}):
+             ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/hacktoberfest/week4/build/nitm/snapshot.py", line 134, in query
+    with urllib.request.urlopen(request, timeout=90) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/usr/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/usr/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 504: Gateway Timeout
+exit 1
