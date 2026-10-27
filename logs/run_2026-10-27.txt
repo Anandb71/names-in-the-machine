@@ -720,4 +720,22 @@ $ grep -c @ docs/ofrenda.html
 $ python -m pytest -q
 123 passed in 0.42s
 
+
+## 13. counted for the write-up (from out/eval_details.jsonl and cache/gemma.jsonl, both local)
+$ sed -n 6p /usr/share/doc/dpkg/copyright        (email removed with nitm.text.strip_emails)
+ Copyright © 1994 Ian Murdock <email removed>
+# how Gemma failed, on the eval (section 6):
+  lines where it answered with the prompt's own invented example names        2 (both rejected: not in the line)
+  negatives (40) it answered NONE                                             32
+  negatives where a Gemma name got past the validator                         0
+  GPL template lines: proposed "James Hacker", "Ty Coon", "Gnomovision"       each rejected by the denylist
+  W3C patent-policy line ("Essential Claims")                                 answered NONE
+  the one wrong Gemma name the validator let through                          a real name with the next capitalised word glued on
+  the free-text regex's 8 false positives                                     a month glued to a name (1), an org (1), two names run together
+                                                                              where an email was removed (2), a name plus the next capitalised
+                                                                              word (3), a legal phrase (1)
+# how Gemma's proposals were rejected in the scan (section 5b, 60 rejections), by kind:
+  not in the line: the prompt's example names 4, right name with wrong capitals 1, not in the line at all 4
+  bad characters: names containing digits (dates, numbers) 6
+
 # end of run log, 2026-10-27 18:57 IST
