@@ -33,13 +33,14 @@ writes a word about anyone, and no model wrote any text on the page.
 On 27 Oct 2026 the scan read 1,682 files (800 Debian copyright files and 882 Python METADATA
 files). 21 names matched someone on Wikidata who has died. The homonym gate removed 3, and
 review turned down 5 more: in each, the person in the file shares a name with someone who died
-but is someone else. 12 people are on the page (`docs/ofrenda.html`). 579 names matched only
-people with no death date on Wikidata, so they were left off, not guessed.
+but is someone else. The author then withdrew 1 approved match, a death too recent to show, so 11 people are on the page
+(`docs/ofrenda.html`). 579 names matched only people with no death date on Wikidata, so they were left off, not guessed.
 
 The identity checks in this run were done by AI agents (one checking each match against the
 receipt, Wikidata and a second source, and an independent one trying to refute it) and spot-checked
-during the build. `verified.json` names Anand Biju as reviewer; the page does not claim anyone
-checked the cards by hand. If you find a mistake, see Corrections below.
+during the build. `verified.json` says so in its `reviewer` and `review_status` fields, and the page
+repeats it: the checks were AI-assisted and the author's own final review is pending. Nobody is
+claimed to have checked the cards by hand yet. If you find a mistake, see Corrections below.
 
 On the labelled free-text eval (307 lines, 260 names; labels from three independent AI-agent
 passes over a written guide, frozen before the scan sent Gemma any line), the free-text regex alone scored
@@ -96,6 +97,7 @@ path works anywhere pip runs: `nitm scan --no-docs --pip-root <dir>`.
 5. **Verify.** `nitm verify` shows the receipts, the Wikidata item, the years, the occupation
    and any warnings. An approval needs a reason and a second-source URL. Approvals go to
    `verified.json`; turned-down matches stay in `review.local.json` on the machine.
+   `nitm verify --withdraw QID --reason ...` takes an approved entry off the page and records why.
 6. **Page.** `nitm page` renders only entries that carry a reviewer, a date, a reason and a
    second source. It refuses to write a page that contains an email address or a word about
    how someone died.

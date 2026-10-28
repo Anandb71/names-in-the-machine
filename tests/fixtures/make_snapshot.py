@@ -16,10 +16,10 @@ OUT = Path(__file__).resolve().parent / "snapshot"
 # Ian Murdock, Phil Katz, Fredrik Lundh, Aaron Swartz, Thomas Lord: real records from data/deceased.json.
 KEEP = ["Q92761", "Q550635", "Q110051708", "Q302817", "Q133867446"]
 
-# Rory Smythe (Q990000001) is not in the real snapshot: he has no software occupation and no link
-# to software. He is here, with his Wikidata dates and occupations as of the snapshot date, to
-# show that a matching name alone is never enough.
-RANDY_SMITH = {
+# Rory Smythe (Q990000001) is an invented person, not in the real snapshot: a basketball coach with no
+# software occupation and no link to software. He stands in for a real homonym, to show that a matching
+# name alone is never enough. The qid is made up.
+RORY_SMYTHE = {
     "qid": "Q990000001",
     "label": "Rory Smythe",
     "aliases": [],
@@ -30,7 +30,7 @@ RANDY_SMITH = {
     "software": [],
 }
 
-# Tom Vane (Q990000002) has the alias "Thomas G. Vane" and no death date on Wikidata.
+# Tom Vane (Q990000002) is invented too: alias "Thomas G. Vane", no death date, so he is never listed.
 # Only the hashes of the name keys are stored, as in the real data/no_death_date.txt.
 NO_DEATH_DATE_NAMES = ["Tom Vane", "Thomas G. Vane"]
 
@@ -40,7 +40,7 @@ def main() -> None:
     people = {p["qid"]: p for p in raw["people"]}
     meta = dict(raw["meta"])
     meta["fixture"] = "cut from data/deceased.json by tests/fixtures/make_snapshot.py; Rory Smythe added as a homonym"
-    rows = [people[q] for q in KEEP] + [RANDY_SMITH]
+    rows = [people[q] for q in KEEP] + [RORY_SMYTHE]
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "deceased.json").write_text(json.dumps({"meta": meta, "people": rows}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     hashes = sorted({key_hash(name_key(n)) for n in NO_DEATH_DATE_NAMES})

@@ -8,7 +8,7 @@ from nitm import evalset, gemma, scan
 
 
 def test_score():
-    gold = {"a": {"phil katz"}, "b": {"ian murdock", "bruce perens"}, "c": set()}
+    gold = {"a": {"phil katz"}, "b": {"ian murdock", "bruno pelham"}, "c": set()}
     guess = {"a": {"phil katz"}, "b": {"ian murdock"}, "c": {"james hacker"}}
     assert evalset.score(gold, guess) == {"tp": 2, "fp": 1, "fn": 1, "precision": 0.667, "recall": 0.667}
 

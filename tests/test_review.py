@@ -54,7 +54,7 @@ def test_turned_down_matches_stay_local(matches, snap):
                   reason="homonym", reviewer="Anand Biju", snapshot_date="2026-10-27")
     assert verified["people"] == []
     assert local["decisions"]["Q133867446"]["decision"] == "reject"
-    assert review.review_counts(local) == {"rejected": 1}
+    assert review.review_counts(local) == {"rejected": 1, "withdrawn": 0}
 
 
 def test_gate_failures_cannot_be_approved(matches, snap):
@@ -106,7 +106,7 @@ def test_other_peoples_names_are_removed_from_receipts(matches, snap):
     assert "Ian Murdock" in base_files["text"] and review.NAME_MARK in base_files["text"]
     dpkg = next(r for r in entry["receipts"] if r["file"].endswith("dpkg/copyright"))
     assert dpkg["text"] == "Copyright © 1994 Ian Murdock <email removed>" and dpkg["others"] == 0
-    assert "Perens" not in str(entry)
+    assert "Pelham" not in str(entry)
     assert review.publish_problems(entry) == []
 
 

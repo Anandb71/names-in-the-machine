@@ -389,6 +389,24 @@ def decide(
     return entry
 
 
+def withdraw(verified: dict[str, Any], local: dict[str, Any], qid: str, reason: str) -> str:
+    """Take one approved entry off the page. Not a rejection: the match is right, the author chooses not to show it.
+
+    The entry leaves verified.json and the decision (with the reason) stays in the local file, so the
+    queue does not offer the match again. Returns the withdrawn person's name.
+    """
+    if not reason.strip():
+        raise ValueError("a withdrawal needs a reason")
+    people = verified.get("people", [])
+    found = [p for p in people if p.get("qid") == qid]
+    if not found:
+        raise ValueError(f"{qid} is not in verified.json")
+    verified["people"] = [p for p in people if p.get("qid") != qid]
+    local.setdefault("decisions", {})[qid] = {"decision": "withdrawn", "reason": reason, "date": today_ist()}
+    return str(found[0].get("name") or qid)
+
+
 def review_counts(local: dict[str, Any]) -> dict[str, int]:
     decisions = local.get("decisions", {})
-    return {"rejected": sum(1 for d in decisions.values() if d.get("decision") == "reject")}
+    return {"rejected": sum(1 for d in decisions.values() if d.get("decision") == "reject"),
+            "withdrawn": sum(1 for d in decisions.values() if d.get("decision") == "withdrawn")}

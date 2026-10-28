@@ -9,7 +9,7 @@
    ],
    "years": "1973–2015",
    "years_note": null,
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "These 1994-1998 Debian files (dpkg, adduser, base-files, base-passwd) carry his debian.org address. Wikipedia: founder of Debian; its dpkg article credits him with the first dpkg in 1994.",
    "second_source": "https://en.wikipedia.org/wiki/Ian_Murdock",
@@ -185,7 +185,7 @@
    ],
    "years": "1962–2000",
    "years_note": null,
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "zlib's copyright file says the deflate format was defined by Phil Katz, as RFC 1951 does. Wikipedia: author of PKZIP, 1962-2000.",
    "second_source": "https://en.wikipedia.org/wiki/Phil_Katz",
@@ -228,7 +228,7 @@
    ],
    "years": "died 2021",
    "years_note": "birth date missing or imprecise on Wikidata",
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "Python's notices pair him with Secret Labs AB on xmlrpclib, unicodeobject.h and _subprocess.c (1999-2004). LWN (2021): early Python contributor and Secret Labs co-founder. Wikidata's birth date is only century-precise, so only the death year is shown.",
    "second_source": "https://lwn.net/Articles/878325/",
@@ -437,7 +437,7 @@
    ],
    "years": "1986–2013",
    "years_note": null,
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "html2text's METADATA and AUTHORS name him as its original author, with his own domain. Wikipedia says he wrote Markdown's html2text translator.",
    "second_source": "https://en.wikipedia.org/wiki/Aaron_Swartz",
@@ -478,7 +478,7 @@
    ],
    "years": "1968–2012",
    "years_note": null,
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "matplotlib's Author field. matplotlib's own history page and Wikipedia name John D. Hunter (1968-2012) as its original author.",
    "second_source": "https://en.wikipedia.org/wiki/John_D._Hunter",
@@ -520,7 +520,7 @@
    ],
    "years": "1970–2012",
    "years_note": null,
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "libbsd's fmtcheck.c came from NetBSD, contributed by Allen Briggs in 2000. NetBSD's developer list gives 2012-03-03, the date Wikidata has.",
    "second_source": "https://www.netbsd.org/people/developers.html",
@@ -562,7 +562,7 @@
    ],
    "years": "1966–2017",
    "years_note": null,
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "The 1997 notice is newlib's setlocale.h, copied from FreeBSD, where the file's first commit is by Andrey A. Chernov (ache). Wikipedia: FreeBSD core team member, 1966-2017. The code is not built for this machine, so nothing is measured.",
    "second_source": "https://en.wikipedia.org/wiki/Andrei_Chernov",
@@ -815,7 +815,7 @@
    ],
    "years": "1955–2021",
    "years_note": null,
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "libcdio's iso9660 headers carry 'J. Schilling' (1999-2000) from mkisofs and cdrtools, which Wikipedia says he wrote and maintained. Wikipedia: died 2021.",
    "second_source": "https://de.wikipedia.org/wiki/J%C3%B6rg_Schilling",
@@ -880,7 +880,7 @@
    ],
    "years": "1949–2024",
    "years_note": null,
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "FFmpeg's '2000, John Walker' is the ciescope filter's notice, ported from Netpbm's ppmcie.c, which credits John Walker of fourmilab.ch; Wikidata gives fourmilab.ch as his site. Wikipedia: founder of Autodesk, 1949-2024.",
    "second_source": "https://en.wikipedia.org/wiki/John_Walker_(programmer)",
@@ -1017,7 +1017,7 @@
    ],
    "years": "1956–2024",
    "years_note": null,
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "Nettle's Serpent files credit the cipher's three designers, Ross Anderson first. Wikipedia: co-designer of Serpent, 1956-2024.",
    "second_source": "https://en.wikipedia.org/wiki/Ross_J._Anderson",
@@ -1063,66 +1063,6 @@
    "snapshot": "2026-10-27"
   },
   {
-   "qid": "Qwithdrawn",
-   "name": "[withdrawn]",
-   "keys": [
-    "fredrick brennan"
-   ],
-   "years": "1994–2026",
-   "years_note": null,
-   "reviewer": "Anand Biju",
-   "date": "2026-10-27",
-   "reason": "[withdrawn]'s test font is credited to [withdrawn] (2020) and came from his GitHub account, which Wikidata lists. Wikipedia and Le Monde (2026) give the date Wikidata has. The font is in [withdrawn]'s source, not installed here, so nothing is measured.",
-   "second_source": "https://en.wikipedia.org/wiki/withdrawn",
-   "found_by": [
-    "copyright"
-   ],
-   "primary_receipt": 2,
-   "receipts": [
-    {
-     "file": "libharfbuzz-icu0/copyright",
-     "line": 128,
-     "text": "Copyright: 2020, [withdrawn]",
-     "package": "libharfbuzz-icu0",
-     "source": "doc",
-     "methods": [
-      "copyright"
-     ],
-     "copies": 1,
-     "others": 0
-    },
-    {
-     "file": "libharfbuzz-subset0/copyright",
-     "line": 128,
-     "text": "Copyright: 2020, [withdrawn]",
-     "package": "libharfbuzz-subset0",
-     "source": "doc",
-     "methods": [
-      "copyright"
-     ],
-     "copies": 1,
-     "others": 0
-    },
-    {
-     "file": "libharfbuzz0b/copyright",
-     "line": 128,
-     "text": "Copyright: 2020, [withdrawn]",
-     "package": "libharfbuzz0b",
-     "source": "doc",
-     "methods": [
-      "copyright"
-     ],
-     "copies": 1,
-     "others": 0
-    }
-   ],
-   "still": {
-    "probe": "",
-    "arg": ""
-   },
-   "snapshot": "2026-10-27"
-  },
-  {
    "qid": "Q133867446",
    "name": "Thomas Lord",
    "keys": [
@@ -1131,7 +1071,7 @@
    ],
    "years": "1966–2022",
    "years_note": null,
-   "reviewer": "Anand Biju",
+   "reviewer": "AI-assisted checks (Claude Code agents); final review by Anand Biju pending",
    "date": "2026-10-27",
    "reason": "diffutils' ChangeLog-2008 has Tom Lord introducing sdiff on 16 Sep 1991 from an FSF machine; glibc's 1995 regex test suite is his. LWN (July 2022) and Wikidata (FSF and Carnegie Mellon) describe the same person. diffutils is Essential, so no package declares a dependency on it: nothing is measured.",
    "second_source": "https://lwn.net/Articles/901807/",
@@ -1210,5 +1150,6 @@
    },
    "snapshot": "2026-10-27"
   }
- ]
+ ],
+ "review_status": "The identity checks for these cards were AI-assisted: agents checked each match against the receipt, Wikidata and a second source, and a second agent tried to refute it. The author's own final review is pending."
 }

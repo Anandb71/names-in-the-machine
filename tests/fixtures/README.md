@@ -1,8 +1,13 @@
 # Fixtures
 
 Every line under `doc/` was copied with `sed -n` from `/usr/share/doc/<package>/copyright`
-on the machine this was built on (Debian 13). Line numbers differ from the originals because
-each file is an excerpt:
+on the machine this was built on (Debian 13). Then every name of a person who is not known to
+have died (and their email address) was replaced with an invented one (for example "Ivor Jessop",
+`ijessop@example.org`), so the repo names no living person. The names of people who have died
+(Ian Murdock, Phil Katz, Fredrik Lundh, Thomas Lord, Aaron Swartz) and the GPL's example people are
+unchanged, as is every organisation. `Thomas G. Vane` and `Rory Smythe` are invented; their Wikidata
+records in `snapshot/` are invented too, with made-up qids. Line numbers differ from the originals
+because each file is an excerpt:
 
 | file | copied lines |
 |---|---|

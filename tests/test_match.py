@@ -23,9 +23,9 @@ def test_murdock_goes_to_review(snap):
     assert statuses(result) == {("Ian Murdock", "review", None)}
 
 
-def test_lane_is_left_off_for_no_death_date(snap):
-    lane = candidate("Thomas G. Vane", "Copyright: 1991-1996, Thomas G. Vane", package="ffmpeg")
-    result = match_candidates([lane], snap)
+def test_vane_is_left_off_for_no_death_date(snap):
+    vane = candidate("Thomas G. Vane", "Copyright: 1991-1996, Thomas G. Vane", package="ffmpeg")
+    result = match_candidates([vane], snap)
     assert result.matches == []  # never offered for review
     assert result.keys_no_death_namesake_only == 1
 

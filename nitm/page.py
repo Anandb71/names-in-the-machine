@@ -176,6 +176,9 @@ def _left_off(summary: dict[str, Any] | None, review_counts: dict[str, int] | No
     rejected = int((review_counts or {}).get("rejected", 0))
     if rejected:
         items.append(f"{rejected:,} match{'es' if rejected != 1 else ''} turned down at review.")
+    withdrawn = int((review_counts or {}).get("withdrawn", 0))
+    if withdrawn:
+        items.append(f"{withdrawn:,} approved match{'es' if withdrawn != 1 else ''} withdrawn by the author before publishing.")
     names = int(((summary or {}).get("names") or {}).get("unique_names_after_validator", 0))
     if names:
         items.append(f"Everyone else stays a number: {names:,} name-shaped strings passed the validator, and living people are never named here.")
@@ -202,6 +205,9 @@ def render(
     snap = ""
     if snapshot_meta:
         snap = f"Years come from a Wikidata snapshot taken {_e(str(snapshot_meta.get('retrieved_finished', ''))[:10])} (CC0)."
+    status = ""
+    if verified.get("review_status"):
+        status = f"<p><strong>Review status:</strong> {_e(str(verified['review_status']))}</p>"
     cards = "".join(card(e) for e in entries)
     if not cards:
         cards = '<p class="named">No verified entries yet.</p>'
@@ -227,6 +233,7 @@ def render(
 {_left_off(summary, review_counts)}
 </main>
 <footer>
+  {status}
   <p>Every line quoted above is copied from a file on this machine, with email addresses and other people's names removed. A line that runs onto the next is joined with " / ". {snap} No model wrote any of the text on this page.</p>
   <p><strong>Corrections:</strong> if a card here is wrong, or a family asks, it comes down at once. Open an issue at <a href="{ISSUES_URL}">{_e(ISSUES_URL)}</a>.</p>
   <p>Made with <a href="{REPO_URL}">names-in-the-machine</a>.</p>

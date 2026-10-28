@@ -46,8 +46,8 @@ def test_gemma_junk_is_rejected_with_a_reason(extractor, snap):
 def test_gemma_reaches_a_name_the_regex_misses(extractor, snap):
     result = run(extractor, snap)
     by_method = result.keys_by_method()
-    assert "wayne davison" in by_method["gemma"]
-    assert "wayne davison" not in by_method.get("byline", set())
+    assert "wade davenport" in by_method["gemma"]
+    assert "wade davenport" not in by_method.get("byline", set())
     assert scan.summary(result)["gemma"]["unique_names_only_gemma"] == 1
 
 

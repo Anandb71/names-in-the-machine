@@ -605,8 +605,8 @@ $ nitm verify --approve Q93033 --primary libavfilter10/copyright:41 --probe rdep
 saved: John Walker (1949–2024)
 $ nitm verify --approve Q2167581 --primary libnettle8t64/copyright:560 --probe rdepends:libnettle8t64 --source https://en.wikipedia.org/wiki/Ross_J._Anderson --reason "Nettle's Serpent files credit the cipher's three designers, Ross Anderson first. Wikipedia: co-designer of Serpent, 1956-2024."
 saved: Ross J. Anderson (1956–2024)
-$ nitm verify --approve Qwithdrawn --primary [withdrawn] --probe none --source https://en.wikipedia.org/wiki/withdrawn --reason "[withdrawn]'s test font is credited to [withdrawn] (2020) and came from his GitHub account, which Wikidata lists. His death in 2026 is reported by Wikipedia and Le Monde. The font is in [withdrawn]'s source, not installed here, so nothing is measured."
-saved: [withdrawn] (1994–2026)
+$ nitm verify --approve [entry withdrawn before publishing, see section 18]
+saved: [entry withdrawn before publishing, see section 18]
 $ nitm verify --approve Q133867446 --primary diffutils/copyright:9 --probe none --source https://lwn.net/Articles/901807/ --reason "diffutils' ChangeLog-2008 has Tom Lord introducing sdiff on 16 Sep 1991 from an FSF machine; glibc's 1995 regex test suite is his. LWN's July 2022 notice and Wikidata (FSF and Carnegie Mellon) describe the same person. diffutils is Essential, so no package declares a dependency on it: nothing is measured."
 saved: Thomas Lord (1966–2022)
 # Turned down at review: 5. In all five the receipt's person is a different person with the same name
@@ -714,7 +714,7 @@ $ grep -c @ docs/ofrenda.html
   Jörg Schilling                   1955–2021     3 receipts in  3 files; found by copyright
   John Walker                      1949–2024     9 receipts in  9 files; found by copyright
   Ross J. Anderson                 1956–2024     2 receipts in  2 files, 2 with other names removed; found by copyright
-  [withdrawn]                 1994–2026     3 receipts in  3 files; found by copyright
+  [one entry withdrawn before publishing, see section 18]
   Thomas Lord                      1966–2022     5 receipts in  5 files; found by byline, copyright, gemma
 
 ## 12. tests (no model, no network)
@@ -749,9 +749,8 @@ $ nitm verify --list
     zlib1g/copyright:10  The deflate format used by zlib was defined by Phil Katz. The deflate  [byline, gemma]
 
 
-## 15. why three cards have no measurement (checked 27 Oct 2026)
+## 15. why two cards have no measurement (checked 27 Oct 2026)
 $ grep -rIl Chernov /usr/include /usr/lib/gcc        -> nothing; and no newlib package in /usr/share/doc
-$ find / -xdev -name 'e8691822f6a705e3e9fb48a0405c645b1a036590*'   -> nothing ([withdrawn]'s test font is not installed)
 $ dpkg -S /usr/bin/sdiff                             -> diffutils: /usr/bin/sdiff
 $ dpkg-query -W -f='${Essential}' diffutils          -> yes (Essential: no package declares a dependency on it)
 
@@ -785,7 +784,7 @@ saved: Andrey Aleksandrovich Chernov (1966–2017)
 saved: Jörg Schilling (1955–2021)
 saved: John Walker (1949–2024)
 saved: Ross J. Anderson (1956–2024)
-saved: [withdrawn] (1994–2026)
+saved: [entry withdrawn before publishing, see section 18]
 saved: Thomas Lord (1966–2022)
 
 $ nitm still --pip-root /workspace --pip-root /home/box --log logs/run_2026-10-27.txt
@@ -834,7 +833,7 @@ $ grep -c @ docs/ofrenda.html
   Jörg Schilling                   1955–2021   named in  3 files (3 distinct lines); first quoted: libcdio19t64/copyright:13
   John Walker                      1949–2024   named in  9 files (9 distinct lines); first quoted: libavfilter10/copyright:41
   Ross J. Anderson                 1956–2024   named in  2 files (2 distinct lines, 2 with other names removed); first quoted: libnettle8t64/copyright:560
-  [withdrawn]                 1994–2026   named in  3 files (3 distinct lines); first quoted: [withdrawn]
+  [one entry withdrawn before publishing, see section 18]
   Thomas Lord                      1966–2022   named in  5 files (5 distinct lines); first quoted: diffutils/copyright:9
 
 # the review screen for Phil Katz, re-captured after the plural fix
@@ -855,3 +854,27 @@ $ python -m pytest -q
 # John Walker's match carried the tool's warning that someone on Wikidata with the same name has no death
 # date; review checked that the FFmpeg line is his (the ciescope code came from his program at fourmilab.ch).
 # end of run log, 2026-10-27 19:37 IST
+
+## 18. after the author's decisions, 28 Oct 2026 06:47 IST (withdrawal, honest review status, invented fixtures)
+# Decisions: (1) one approved match is withdrawn before publishing (a death too recent to show; the match
+# itself is sound), so the page has 11 people, not 12; (2) the review status says the identity checks were
+# AI-assisted and the author's own final review is pending, and no field claims otherwise; (3) test fixtures and
+# docs name no living person (invented names and emails); (4) git history was rewritten to match.
+# The earlier sections stay as recorded, except that the withdrawn entry's name is redacted from them.
+$ nitm verify --withdraw <the withdrawn entry> --reason "Too recent a death to show. The match itself is sound."
+withdrawn: [entry withdrawn before publishing]
+# verified.json: reviewer set on all 11 entries to "AI-assisted checks (Claude Code agents); final review by Anand Biju pending";
+# top-level review_status added; the page prints it in the footer.
+$ python -c "len(json.load(open(\"verified.json\"))[\"people\"])"
+11
+$ nitm page -o docs/ofrenda.html
+wrote docs/ofrenda.html: 11 cards
+$ grep -c @ docs/ofrenda.html
+0
+$ python -c "page.check(html), death-circumstance words"
+page.check problems: none
+cards: 11 | text problems: none
+$ python -m pytest -q
+151 passed in 1.13s
+# funnel after the withdrawal: names that passed the gate 18 (17 people) · removed at human review 5 · withdrawn by the author 1 · verified people 11 · verified people only Gemma found 0
+# end of section 18

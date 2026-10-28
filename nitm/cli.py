@@ -169,6 +169,16 @@ def cmd_verify(args) -> int:
             mark = "decided" if match["qid"] in decided else "open"
             print(f"({mark}) " + review.screen(match, snap.people[match["qid"]], index, len(queue)))
         return 0
+    if args.withdraw:
+        try:
+            name = review.withdraw(verified, local, args.withdraw, args.reason or "")
+        except ValueError as exc:
+            print(f"nitm: {exc}", file=sys.stderr)
+            return 2
+        review.save_json(Path(args.verified), verified)
+        review.save_json(Path(args.local), local)
+        print(f"withdrawn: {name}")
+        return 0
     reviewer = _reviewer(args)
     if not reviewer:
         print("nitm: say who is reviewing: --reviewer NAME (or NITM_REVIEWER, or git config user.name)", file=sys.stderr)
@@ -432,6 +442,7 @@ def build_parser() -> argparse.ArgumentParser:
     v.add_argument("--list", action="store_true", help="show the review queue and stop")
     v.add_argument("--approve", metavar="QID", help="approve one match without the prompt")
     v.add_argument("--reject", metavar="QID", help="turn down one match without the prompt")
+    v.add_argument("--withdraw", metavar="QID", help="take an approved entry off the page (needs --reason)")
     v.add_argument("--reason")
     v.add_argument("--source", help="second-source URL (needed to approve)")
     v.add_argument("--probe", help="still-working probe, e.g. rdepends:zlib1g, dpkg-log:/var/log/dpkg.log, importers:re@/usr/lib/python3.13, or none")

@@ -126,3 +126,28 @@ def test_page_has_corrections_line_and_left_off_counts(world):
 def test_no_model_wrote_the_page(world):
     assert "No model wrote any of the text on this page." in world["html"]
     assert ANSWERS  # the fake model was used for this world
+
+
+def test_withdrawn_person_leaves_the_page_and_is_counted(world):
+    verified = json.loads(json.dumps(world["verified"]))
+    local = {}
+    assert review.withdraw(verified, local, "Q550635", "too recent to show") == "Phil Katz"
+    assert [e["qid"] for e in verified["people"]] == ["Q92761", "Q110051708"]
+    assert local["decisions"]["Q550635"]["decision"] == "withdrawn"
+    assert review.review_counts(local) == {"rejected": 0, "withdrawn": 1}
+    with pytest.raises(ValueError):
+        review.withdraw(verified, local, "Q550635", "again")  # already gone
+    with pytest.raises(ValueError):
+        review.withdraw(verified, local, "Q92761", "  ")  # a reason is required
+    html = page.render(verified, review_counts=review.review_counts(local))
+    assert "Phil Katz" not in html
+    assert "1 approved match withdrawn by the author before publishing." in html
+
+
+def test_review_status_is_shown_and_never_claims_a_human_review(world):
+    verified = json.loads(json.dumps(world["verified"]))
+    assert "Review status" not in world["html"]
+    verified["review_status"] = "Identity checks were AI-assisted; the author's own review is pending."
+    html = page.render(verified)
+    assert "Review status:</strong> Identity checks were AI-assisted; the author&#x27;s own review is pending." in html
+    assert page.check(html) == []

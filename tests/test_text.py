@@ -49,4 +49,4 @@ def test_shape_two_to_four_tokens():
 def test_key_hash_is_stable_and_short():
     assert key_hash("thomas vane") == key_hash("thomas vane")
     assert len(key_hash("thomas vane")) == 12
-    assert key_hash("thomas vane") != key_hash("tom lane")
+    assert key_hash("thomas vane") != key_hash("tom vane")

@@ -58,3 +58,14 @@ def test_eval_run_refuses_unfrozen_labels(tmp_path, capsys):
     assert cli.main(["eval", "freeze"] + args) == 0
     assert cli.main(["eval", "run", "--no-model", "--details", str(tmp_path / "d.jsonl")] + args) == 0
     assert "precision 1.000 · recall 1.000" in capsys.readouterr().out
+
+
+def test_withdraw_removes_an_approved_entry(tmp_path, capsys):
+    scan(tmp_path, capsys)
+    review = ["--verified", str(tmp_path / "verified.json"), "--local", str(tmp_path / "local.json"), "--reviewer", "A Reviewer"]
+    assert cli.main(["verify", "--approve", "Q92761", "--reason", "same person", "--source",
+                     "https://en.wikipedia.org/wiki/Ian_Murdock", "--probe", "none"] + review + common(tmp_path)) == 0
+    assert cli.main(["verify", "--withdraw", "Q92761"] + review + common(tmp_path)) == 2  # needs a reason
+    assert cli.main(["verify", "--withdraw", "Q92761", "--reason", "author's choice"] + review + common(tmp_path)) == 0
+    assert json.loads((tmp_path / "verified.json").read_text())["people"] == []
+    assert json.loads((tmp_path / "local.json").read_text())["decisions"]["Q92761"]["decision"] == "withdrawn"
